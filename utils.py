@@ -155,6 +155,7 @@ def choose_lay_option(venueName):
     odds_arr = get_neds_odds(venueName)
     print(odds_arr)
     ## Check if there are similar odds, check if len of list and len of set are equal
+    ## TODO: check only if the 2 lowest odds are similar
     if len(odds_arr) != len(set(odds_arr)):
         return -1
 
