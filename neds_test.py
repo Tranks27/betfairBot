@@ -4,7 +4,7 @@
 from utils import choose_lay_option
 
 if __name__ == "__main__":
-    venueName = 'doncaster'
+    venueName = 'suffolk-downs-am'
     lay_option = choose_lay_option(venueName)
     if(lay_option == -1):
         print("ERROR!!! 2 same odds found")

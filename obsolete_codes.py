@@ -21,6 +21,7 @@
 
 
 ####################################################################################################################
+####################################################################################################################
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -56,3 +57,12 @@ driver.close()
 # timestr = time.strftime("%Y%m%d")
 # print(timestr)
 
+####################################################################################################################
+####################################################################################################################
+# cancelled_order = trading.betting.cancel_orders(market_id=myRaceID)
+# # listClearedOrders
+# cleared_orders = trading.betting.list_cleared_orders(bet_status="CANCELLED",
+#                                                     market_ids=[myRaceID])
+# # Create a DataFrame from the orders
+# pd.DataFrame(cleared_orders._data['cancelledOrders'])
+# cleared_orders

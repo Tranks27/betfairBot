@@ -146,21 +146,32 @@ def get_neds_odds(venueName):
     # print(odds)
     if odds == []:
         print("Neds api failed")
-        assert()
+
     driver.close()
 
     return odds
 
+def get_odds(venueName):
+    venueName_vars = [venueName, venueName+"-bags", venueName+"-am"]
+    for i in venueName_vars:
+        odds_arr = get_neds_odds(i)
+        if(len(odds_arr) != 0):
+            print("True Venue Name = " + i)
+            break # found it
+        
+        time.sleep(3)
+
+    return odds_arr
+
 def choose_lay_option(venueName):
-    odds_arr = get_neds_odds(venueName)
+    odds_arr = get_odds(venueName) # try getting the odds
+    if(len(odds_arr) == 0): # try a second time if result is empty
+        odds_arr = get_odds(venueName)
     print(odds_arr)
-    ## Check if there are similar odds, check if len of list and len of set are equal
-    ## TODO: check only if the 2 lowest odds are similar
-    if len(odds_arr) != len(set(odds_arr)):
-        return -1
 
     ## Check if there 6 runners
     if len(odds_arr) != 6:
+        print('Length of odds_arr = ' + str(len(odds_arr)))
         return -2
 
     ## Sort out the odds_arr
@@ -168,7 +179,13 @@ def choose_lay_option(venueName):
     print(sorted_odds)
     pos1 = odds_arr.index(sorted_odds[0]) 
     pos2 = odds_arr.index(sorted_odds[1]) 
-    print(str(pos1+1) + "," + str(pos2+1))
+    pos3 = odds_arr.index(sorted_odds[2]) 
+    print("Forecast = " + str(pos1+1) + "-" + str(pos2+1))
+
+    ## TODO: check only if the 2 lowest odds are similar
+    if pos1 == pos2 or pos2 == pos3:
+        print('Two of the 3 smallest odds are the same : pos1 = ' + str(pos1) + ',pos2 = ' + str(pos2)+ ',pos3 = ' + str(pos3))
+        return -1
 
     ## Choose the index of the lay selection out of 30 options or less
     coordinates = []
