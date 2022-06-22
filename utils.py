@@ -8,7 +8,8 @@ from selenium.webdriver.chrome.options import Options
 import pandas as pd
 
 import time
-
+import datetime
+import pytz
 ###
 # function from betfair tutorial
 ###
@@ -199,6 +200,31 @@ def choose_lay_option(venueName):
     res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
     print(res[0])
     return res[0]
+
+def get_next_market(market_catalogues):
+    timeNow = (datetime.datetime.now(pytz.timezone("Europe/London"))-datetime.timedelta(hours=1)) ## minus 1 hr due to daylight savings maybe?
+    print("Time Now: ")
+    print(timeNow.strftime("%Y-%m-%d %T"))
+    ## TODO Compare the list of markets - if timeNow is less than market start time (ie. market hasn't started yet), pick it. Otherwise, skip
+    time1 = timeNow.replace(tzinfo=pytz.UTC)
+
+    myRaceID = 0
+    myRaceVenue = ""
+    for marketObj in market_catalogues:
+        time2 = marketObj.market_start_time.replace(tzinfo=pytz.UTC)
+        if time1 < time2:
+            ## Found the race to bet
+            myRaceID = marketObj.market_id # store the market id
+            myRaceVenue = marketObj.event.venue.lower().replace(" ", "-") # store the venue
+            print("Found the market to lay: Name = " + myRaceVenue + " id = " + str(myRaceID))
+            break
+        
+    print("Market Start Time: " + str(time2))
+
+    ##TODO Sleep until x seconds before the start time
+    return time2-time1, myRaceID, myRaceVenue
+
+
 
 if __name__ == "__main__":
     venueName = 'crayford-bags'
