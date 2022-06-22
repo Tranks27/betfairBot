@@ -9,8 +9,10 @@ import datetime
 import json
 from utils import process_runner_books
 import pytz
-import constants
+import time
 
+# Project libraries
+import constants
 
 # Change this certs path to wherever you're storing your certificates
 certs_path = "/home/naing/certs/"
@@ -28,10 +30,13 @@ trading = betfairlightweight.APIClient(username=my_username,
 
 trading.login()
 
+# %%
+## TODO
+liability_amount = 1500
 
 # %%
 #######################################
-# Filter out just greyhoud racing
+# Filter out only greyhoud races
 #######################################
 gh_racing_id = constants.GH_RACING_ID #Greyhound racing ID
 greyhound_racing_filter = filters.market_filter(
@@ -104,6 +109,7 @@ market_types_venueOfTheDay_df
 ## and sleep until 15 seconds before the game
 #######################################
 timeNow = (datetime.datetime.now(pytz.timezone("Europe/London"))-datetime.timedelta(hours=1)) ## minus 1 hr due to daylight savings maybe?
+print("Time Now: ")
 print(timeNow.strftime("%Y-%m-%d %T"))
 ## TODO Compare the list of markets - if timeNow is less than market start time (ie. market hasn't started yet), pick it. Otherwise, skip
 time1 = timeNow.replace(tzinfo=pytz.UTC)
@@ -116,12 +122,17 @@ for marketObj in market_catalogues:
         myRaceVenue = marketObj.event.venue.lower().replace(" ", "-") # store the venue
         print("Found the market to lay: Name = " + myRaceVenue + " id = " + str(myRaceID))
         break
+print("Market Start Time: ")
+print(time2)
 
-##TODO Sleep until 15 seconds before the start time
-
+##TODO Sleep until x seconds before the start time
+time_to_sleep = (time2-time1 - datetime.timedelta(seconds=constants.PREBET_DELAY)).seconds
+print("Sleeping for " + str(time_to_sleep) + " seconds")
+time.sleep(time_to_sleep)
+print("Sleeping done")
 
 ##TODO Choose the liability amount
-liability_amount = 1500
+
 
 
 # %%
@@ -162,7 +173,7 @@ if(lay_selection_index == -1):
     
 elif(lay_selection_index == -2):
     print("ERROR!!! less than 6 runners")
-    assert()
+    # assert()
 
 elif(lay_selection_index == -3):
     print("ERROR!!! NEDS API failed")
@@ -182,11 +193,20 @@ limit_order_filter = filters.limit_order(
     bet_target_size=liability_amount # use this if i want $1500 as liability
 )
 
+market_close_order_filter = filters.market_on_close_order(
+    liability=liability_amount
+)
+
 instructions_filter = filters.place_instruction(
     selection_id = str(lay_selection_id),
-    order_type = "LIMIT",
     side="LAY",
-    limit_order=limit_order_filter
+    ## fixed price order
+    # order_type = "LIMIT",
+    # limit_order=limit_order_filter
+
+    ## flexible price order
+    order_type = "MARKET_ON_CLOSE",
+    market_on_close_order= market_close_order_filter
 )
 
 instructions_filter
@@ -197,6 +217,17 @@ order = trading.betting.place_orders(
     customer_strategy_ref='Naing_maker',
     instructions=[instructions_filter]
 )
+
+# %%
+# listClearedOrders
+# cleared_orders = trading.betting.list_cleared_orders(bet_status="SETTLED",
+#                                                     market_ids=[myRaceID])
+
+# # 
+# # Create a DataFrame from the orders
+# pd.DataFrame(cleared_orders._data['clearedOrders'])
+
+# %%
 
 
 
