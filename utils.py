@@ -114,32 +114,32 @@ def get_neds_odds(venueName):
     for i,val in enumerate(data_arr_part2):
         if('1. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('-')
+                odds.append('99')
             else:
                 odds.append(str(data_arr_part2[i+2])) #get the first value of that string
         elif('2. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('-')
+                odds.append('99')
             else:
                 odds.append(str(data_arr_part2[i+2])) 
         elif('3. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('-')
+                odds.append('99')
             else:
                 odds.append(str(data_arr_part2[i+2])) 
         elif('4. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('-')
+                odds.append('99')
             else:
                 odds.append(str(data_arr_part2[i+2])) 
         elif('5. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('-')
+                odds.append('99')
             else:
                 odds.append(str(data_arr_part2[i+2])) 
         elif('6. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('-')
+                odds.append('99')
             else:
                 odds.append(str(data_arr_part2[i+2])) 
 
@@ -172,7 +172,7 @@ def choose_lay_option(venueName):
     ## Check if there 6 runners
     if len(odds_arr) != 6:
         print('Length of odds_arr = ' + str(len(odds_arr)))
-        return -2
+        # return -2
 
     ## Sort out the odds_arr
     sorted_odds = sorted(odds_arr,key=float)
