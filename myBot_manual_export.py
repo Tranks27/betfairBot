@@ -184,7 +184,7 @@ else:
 
 lay_selection_id = lay_options_ids[lay_selection_index]
 print(lay_selection_id)
-fav_price = runners_df.loc[runners_df['Best Lay Price'].idxmin(), 'Best Lay Price']
+fav_price = runners_df.loc[runners_df['Best Lay Price'].idxmin(), 'Best Lay Price'] + 1
 
 limit_order_filter = filters.limit_order(
     price=fav_price,
@@ -201,12 +201,12 @@ instructions_filter = filters.place_instruction(
     selection_id = str(lay_selection_id),
     side="LAY",
     ## fixed price order
-    # order_type = "LIMIT",
-    # limit_order=limit_order_filter
+    order_type = "LIMIT",
+    limit_order=limit_order_filter
 
     ## flexible price order
-    order_type = "MARKET_ON_CLOSE",
-    market_on_close_order= market_close_order_filter
+    # order_type = "MARKET_ON_CLOSE",
+    # market_on_close_order= market_close_order_filter
 )
 
 instructions_filter
