@@ -93,6 +93,7 @@ def get_neds_odds(venueName):
     for line in data.splitlines():
         if(line == 'Abandoned'):
             abdn_flag = True
+            print("abandon_flag = True")
             break
 
         if not flag_part2:
@@ -102,9 +103,9 @@ def get_neds_odds(venueName):
             data_arr_part2.append(str(''.join(line)))
         # print(line)
 
-    # print(data_arr_part1)
-    # print("end of part1")
-    # print(data_arr_part2)
+    print(data_arr_part1)
+    print("end of part1")
+    print(data_arr_part2)
 
     # assert(abdn_flag==True) # exit if the chosen race is abandoned
 
@@ -153,7 +154,7 @@ def get_neds_odds(venueName):
     return odds
 
 def get_odds(venueName):
-    venueName_vars = [venueName, venueName+"-bags", venueName+"-am"]
+    venueName_vars = [venueName+"-bags", venueName+"-am", venueName]
     for i in venueName_vars:
         odds_arr = get_neds_odds(i)
         if(len(odds_arr) != 0):
