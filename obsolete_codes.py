@@ -66,3 +66,23 @@ driver.close()
 # # Create a DataFrame from the orders
 # pd.DataFrame(cleared_orders._data['cancelledOrders'])
 # cleared_orders
+
+
+####################################################################################################################
+## MARKET_ON_CLOSE order
+####################################################################################################################
+order_filter = filters.market_on_close_order(
+    liability=liability_amount
+)
+
+instructions_filter = filters.place_instruction(
+    selection_id = str(lay_selection_id),
+    side="LAY",
+    ## fixed price order
+    order_type = "LIMIT",
+    limit_order=order_filter
+
+    ## flexible price order
+    # order_type = "MARKET_ON_CLOSE",
+    # market_on_close_order= order_filter
+)

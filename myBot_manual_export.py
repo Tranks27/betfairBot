@@ -193,9 +193,9 @@ limit_order_filter = filters.limit_order(
     bet_target_size=liability_amount # use this if i want $1500 as liability
 )
 
-market_close_order_filter = filters.market_on_close_order(
-    liability=liability_amount
-)
+# market_close_order_filter = filters.market_on_close_order(
+#     liability=liability_amount
+# )
 
 instructions_filter = filters.place_instruction(
     selection_id = str(lay_selection_id),
