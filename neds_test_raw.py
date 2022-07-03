@@ -15,7 +15,7 @@ driver = webdriver.Chrome(options=options)
 # driver = webdriver.Chrome()
 
 
-url = 'https://www.neds.com.au/racing/newcastle-bags/9bf0cd94-8e6c-4a90-a217-27a1565d5ee7'
+url = 'https://www.neds.com.au/racing/doncaster-bags/fbac4c1b-4557-466a-8dc8-0d816afcc65e'
 driver.get(url)
 time.sleep(2)
 try:

@@ -220,12 +220,17 @@ def get_next_market(market_catalogues):
             myRaceID = marketObj.market_id # store the market id
             myRaceVenue = marketObj.event.venue.lower().replace(" ", "-") # store the venue
             print("Found the market to lay: Name = " + myRaceVenue + " id = " + str(myRaceID))
+
+            print("market Name = ", marketObj.market_name)
             break
         
     print("Market Start Time: " + str(time2))
-
+    
     ##TODO Sleep until x seconds before the start time
-    return time2-time1, myRaceID, myRaceVenue
+    return time2, time2-time1, myRaceID, myRaceVenue
+
+def get_runner1_name(market_catalogues):
+    return market_catalogues[0].runners[0].runner_name
 
 def get_new_price(prev_price):
     prev_price = float(prev_price)
