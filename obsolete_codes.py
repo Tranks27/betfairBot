@@ -71,18 +71,51 @@ driver.close()
 ####################################################################################################################
 ## MARKET_ON_CLOSE order
 ####################################################################################################################
-order_filter = filters.market_on_close_order(
-    liability=liability_amount
-)
+# order_filter = filters.market_on_close_order(
+#     liability=liability_amount
+# )
 
-instructions_filter = filters.place_instruction(
-    selection_id = str(lay_selection_id),
-    side="LAY",
-    ## fixed price order
-    order_type = "LIMIT",
-    limit_order=order_filter
+# instructions_filter = filters.place_instruction(
+#     selection_id = str(lay_selection_id),
+#     side="LAY",
+#     ## fixed price order
+#     order_type = "LIMIT",
+#     limit_order=order_filter
 
     ## flexible price order
     # order_type = "MARKET_ON_CLOSE",
     # market_on_close_order= order_filter
-)
+# )
+
+####################################################################################################################
+# get increased price
+####################################################################################################################
+# def get_new_price(prev_price):
+#     ## Valid increment options by group defined by Betfair 
+#     increment_options = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10]
+
+#     if prev_price <= 2:
+#         increment = increment_options[0]
+#     elif prev_price <= 3:
+#         increment = increment_options[1]
+#     elif prev_price <= 4:
+#         increment = increment_options[2]
+#     elif prev_price <= 6:
+#         increment = increment_options[3]
+#     elif prev_price <= 10:
+#         increment = increment_options[4]
+#     elif prev_price <= 20:
+#         increment = increment_options[5]
+#     elif prev_price <= 30:
+#         increment = increment_options[6]
+#     elif prev_price <= 50:
+#         increment = increment_options[7]
+#     elif prev_price <= 100:
+#         increment = increment_options[8]
+#     elif prev_price <= 1000:
+#         increment = increment_options[9]
+#     else:
+#         print("Invalid price increment")
+#         assert()
+    
+#     return prev_price + increment
