@@ -116,6 +116,7 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
 debug = True # Print the data frames
 completion_flag = False # completion flag
 completion_cnt = 0
+liability_options = []
 
 while(completion_cnt < 10):
     # %%
@@ -196,7 +197,6 @@ while(completion_cnt < 10):
     # Choose the liability amount
     # random from a list of 10 options
     #######################################
-    liability_options = []
     if(len(liability_options) == 0):
         liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
     print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
