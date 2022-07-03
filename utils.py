@@ -10,6 +10,8 @@ import pandas as pd
 import time
 import datetime
 import pytz
+import csv
+
 ###
 # function from betfair tutorial
 ###
@@ -225,7 +227,43 @@ def get_next_market(market_catalogues):
     ##TODO Sleep until x seconds before the start time
     return time2-time1, myRaceID, myRaceVenue
 
+def get_new_price(prev_price):
+    prev_price = float(prev_price)
+    ## Valid increment options by group defined by Betfair 
+    increment_options = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10]
 
+    if prev_price <= 2:
+        increment = increment_options[0]
+    elif prev_price <= 3:
+        increment = increment_options[1]
+    elif prev_price <= 4:
+        increment = increment_options[2]
+    elif prev_price <= 6:
+        increment = increment_options[3]
+    elif prev_price <= 10:
+        increment = increment_options[4]
+    elif prev_price <= 20:
+        increment = increment_options[5]
+    elif prev_price <= 30:
+        increment = increment_options[6]
+    else:
+        print("Invalid price increment")
+        assert()
+    
+    return str(prev_price + increment)
+
+def write_to_file(myRaceID, betOutcome, profit):
+    with open('Profit_Loss.csv', 'a+') as f:
+        writer = csv.writer(f)
+        ## check if the file is empty: if NO, write newline char, if YES do nothing,
+        f.seek(0) # Move read cursor to the start of file
+        data = f.read(1)
+        if len(data) > 0:
+            f.write("\n")
+        else:
+            writer.writerow(['Race ID', 'Bet Outcome', 'Profit/Loss'])
+        
+        writer.writerow([myRaceID, betOutcome, profit])
 
 if __name__ == "__main__":
     venueName = 'crayford-bags'
