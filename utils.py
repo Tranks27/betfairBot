@@ -167,7 +167,7 @@ def get_odds(venueName):
 
     return odds_arr
 
-def choose_lay_option(venueName):
+def choose_lay_option_neds(venueName):
     odds_arr = get_odds(venueName) # try getting the odds
     if(len(odds_arr) == 0): # try a second time if result is empty
         odds_arr = get_odds(venueName)
@@ -252,8 +252,9 @@ def get_new_price(prev_price):
     
     return str(prev_price + increment)
 
-def write_to_file(myRaceID, betOutcome, profit):
-    with open('Profit_Loss.csv', 'a+') as f:
+## Write result to a csv file
+def write_to_file(fname, myRaceID, betOutcome, profit):
+    with open(fname, 'a+') as f:
         writer = csv.writer(f)
         ## check if the file is empty: if NO, write newline char, if YES do nothing,
         f.seek(0) # Move read cursor to the start of file
