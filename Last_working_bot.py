@@ -32,7 +32,7 @@ trading.login()
 
 # %%
 ## TODO
-liability_amount = 1500
+liability_amount = 5
 
 # %%
 #######################################
@@ -163,9 +163,9 @@ print(lay_options_ids)
 #######################################
 # Get odds from NEDS
 #######################################
-from utils import choose_lay_option
+from utils import choose_lay_option_neds
 
-lay_selection_index = choose_lay_option(myRaceVenue)
+lay_selection_index = choose_lay_option_neds(myRaceVenue)
 
 if(lay_selection_index == -1):
     print("ERROR!!! 2 same odds found")
@@ -218,16 +218,6 @@ order = trading.betting.place_orders(
     instructions=[instructions_filter]
 )
 
-# %%
-# listClearedOrders
-# cleared_orders = trading.betting.list_cleared_orders(bet_status="SETTLED",
-#                                                     market_ids=[myRaceID])
-
-# # 
-# # Create a DataFrame from the orders
-# pd.DataFrame(cleared_orders._data['clearedOrders'])
-
-# %%
 
 
 
