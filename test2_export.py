@@ -107,7 +107,9 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
     
     lay_selection_id = lay_options_ids[lay_selection_index]
     print("lay_selection_id = " + str(lay_selection_id))
-    fav_price = runners_df.loc[runners_df['Best Lay Price'].idxmin(), 'Best Lay Price']
+    picked_row_df = runners_df.loc[runners_df['Selection ID'] == lay_selection_id]
+    [fav_price] = picked_row_df['Best Lay Price'].values
+    print("Chosen fav_price = ", fav_price)
 
     return lay_selection_id, fav_price
 
@@ -169,15 +171,20 @@ while(completion_cnt < 10):
 
     if(lay_selection_index == -1):
         print("ERROR!!! 2 same odds found")
-        assert()
+        print("Moving to next match")
+        # assert()
+        continue
         
     elif(lay_selection_index == -2):
         print("ERROR!!! less than 6 runners")
         # assert()
+        print("Moving to next match")
+        continue
 
     elif(lay_selection_index == -3):
         print("ERROR!!! NEDS API failed")
-        assert()
+        print("Moving to next match")
+        continue
     else:
         print("Lay option found successfully")
         print(lay_selection_index)
@@ -199,6 +206,7 @@ while(completion_cnt < 10):
     #######################################
     if(len(liability_options) == 0):
         liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
+        # liability_options = [50, 50, 50, 50, 50, 50, 50, 50, 1000, 1000] #not sure why this can't be moved into constants.py
     print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
 
     [liability_amount] = np.random.choice(liability_options, size=1)
@@ -247,47 +255,55 @@ while(completion_cnt < 10):
     #######################################
     # utils.ensure_order_matched(myRaceID, lay_selection_index, price_filter)
     fullyMatched_flag = False
-    while fullyMatched_flag == False:
-        ## get the current order
-        current_orders = trading.betting.list_current_orders(
-            market_ids=[myRaceID])
-        single_current_order = current_orders._data['currentOrders'][0]
-        print(single_current_order)
+    try:
+        while fullyMatched_flag == False:
+            ## get the current order
+            current_orders = trading.betting.list_current_orders(
+                market_ids=[myRaceID])
+            single_current_order = current_orders._data['currentOrders'][0]
+            print(single_current_order)
 
-        unmatched_size = single_current_order['sizeRemaining']
-        print('unmatched size = ', unmatched_size)
+            unmatched_size = single_current_order['sizeRemaining']
+            print('unmatched size = ', unmatched_size)
 
-        ## if there's unmatched order, replace it with new price, else set the fullyMatched flag
-        if float(unmatched_size) != 0:
-            print("Order is not fully matched yet")
+            ## if there's unmatched order, replace it with new price, else set the fullyMatched flag
+            if float(unmatched_size) != 0:
+                print("Order is not fully matched yet")
 
-            ## Get the new best Lay price
-            lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
+                ## Get the new best Lay price
+                lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
 
-            ## Replace the unmatched order with the new price
-            replace_instructions_filter = filters.replace_instruction(
-                bet_id= single_current_order['betId'],
-                new_price= fav_price
-            )
-            print(replace_instructions_filter)
-
-            newOrder = trading.betting.replace_orders(
-                    market_id = myRaceID,
-                    customer_ref='Naing_maker_Replaced',
-                    instructions=[replace_instructions_filter]
+                ## Replace the unmatched order with the new price
+                replace_instructions_filter = filters.replace_instruction(
+                    bet_id= single_current_order['betId'],
+                    new_price= fav_price
                 )
+                print("replace intructions filter: ", replace_instructions_filter)
 
-            print("Replaced order")
-            time.sleep(5)
-        else:
-            print("Full order matched")
-            fullyMatched_flag = True
+                newOrder = trading.betting.replace_orders(
+                        market_id = myRaceID,
+                        customer_ref='Naing_maker_Replaced',
+                        instructions=[replace_instructions_filter]
+                    )
 
+                print("Replaced order report: ", newOrder)
+                time.sleep(5)
+            else:
+                print("Full order matched")
+                fullyMatched_flag = True
+    except IndexError:
+        print("The current orders might have been cleared since the race started")
+        completion_flag = True 
+        continue
+    except Exception as e:
+        print(e)
+        completion_flag = True # Set it True so the program can continue for the next game
+        continue
     #######################################
     # Check if the last bet has settled and note the result
     # Only if the previous race is settled, start next game 
     #######################################
-    settled_flag = False
+    settled_flag = False    
     while settled_flag == False:
         cleared_orders = trading.betting.list_cleared_orders(
             bet_status="SETTLED",
@@ -314,6 +330,8 @@ while(completion_cnt < 10):
         else:
             print("Sleep 60 seconds before checking again if market is settled")
             time.sleep(60) # TODO:Check again in 60 seconds
+
+
     
     print("Sleeping for some time before starting the next game")
     time.sleep(np.random.randint(60,180))

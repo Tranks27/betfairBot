@@ -118,4 +118,4 @@ driver.close()
 #         print("Invalid price increment")
 #         assert()
     
-#     return prev_price + increment
+#     return str(prev_price + increment)
