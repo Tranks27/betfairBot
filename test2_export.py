@@ -120,7 +120,7 @@ completion_flag = False # completion flag
 completion_cnt = 0
 liability_options = []
 
-while(completion_cnt < 10):
+while(completion_cnt < 30):
     # %%
     #######################################
     # Filter out only greyhoud races
@@ -205,8 +205,8 @@ while(completion_cnt < 10):
     # random from a list of 10 options
     #######################################
     if(len(liability_options) == 0):
-        liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
-        # liability_options = [50, 50, 50, 50, 50, 50, 50, 50, 1000, 1000] #not sure why this can't be moved into constants.py
+        # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
+        liability_options = [50, 50, 50, 50, 50, 50, 50, 50, 50, 1000] #not sure why this can't be moved into constants.py
     print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
 
     [liability_amount] = np.random.choice(liability_options, size=1)
