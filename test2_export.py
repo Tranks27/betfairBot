@@ -17,7 +17,7 @@ import utils
 import constants
 
 # Change this certs path to wherever you're storing your certificates
-certs_path = "/home/naing/certs/"
+certs_path = str(os.getcwd()) + "/certs/"
 # Change these login details to your own
 my_username = constants.USERNAME
 my_password = constants.PASSWORD
