@@ -1,5 +1,4 @@
 # %%
-# %%
 # Import libraries
 import betfairlightweight
 from betfairlightweight import filters
@@ -15,21 +14,6 @@ from IPython.display import display
 # Project libraries
 import utils
 import constants
-
-# Change this certs path to wherever you're storing your certificates
-certs_path = "/home/naing/certs/"
-# Change these login details to your own
-my_username = constants.USERNAME
-my_password = constants.PASSWORD
-# my_app_key = constants.API_KEY_DEMO #demo
-my_app_key = constants.API_KEY_LIVE #live
-
-trading = betfairlightweight.APIClient(username=my_username,
-                                       password=my_password,
-                                       app_key=my_app_key,
-                                       certs=certs_path)
-
-trading.login()
 
 # %%
 def filter_gh_races(gh_racing_id):
@@ -102,8 +86,8 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
     for obj in market_book.runners:
         lay_options_ids.append(obj.selection_id)
         
-    # if debug:
-    #     print(lay_options_ids)
+    if debug:
+        print(lay_options_ids)
     
     lay_selection_id = lay_options_ids[lay_selection_index]
     print("lay_selection_id = " + str(lay_selection_id))
@@ -113,228 +97,268 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
 
     return lay_selection_id, fav_price
 
+def clearOutputFile(fname):
+    ## Clear the contents of the output file
+    with open(fname, 'r+') as f:
+        f.truncate()
+        print("Cleared contents from the output file -> ", fname)
+          
+    return
 
-## TODO
-debug = True # Print the data frames
-completion_flag = False # completion flag
-completion_cnt = 0
-liability_options = []
+if __name__ == "__main__":
+    # Change this certs path to wherever you're storing your certificates
+    certs_path = str(os.getcwd()) + "/certs/"
+    # Change these login details to your own
+    my_username = constants.USERNAME
+    my_password = constants.PASSWORD
+    # my_app_key = constants.API_KEY_DEMO #demo
+    my_app_key = constants.API_KEY_LIVE #live
 
-while(completion_cnt < 30):
-    # %%
-    #######################################
-    # Filter out only greyhoud races
-    #######################################
-    gb_gh_events = filter_gh_races(constants.GH_RACING_ID)#Greyhound racing ID
+    trading = betfairlightweight.APIClient(username=my_username,
+                                        password=my_password,
+                                        app_key=my_app_key,
+                                        certs=certs_path)
 
-    # %%
-    #######################################
-    # Extract a list of IDs for the forecast markets
-    #######################################
-    fc_venue_ids = []
-    fc_venue_names = []
-    for eventObj in gb_gh_events:
-        fc_venue_ids.append(eventObj.event.id)
-        fc_venue_names.append(eventObj.event.name)
+    trading.login()
 
-    fc_venue_ids, fc_venue_names
+    ## TODO
+    debug = True # Print the data frames
+    completion_cnt = 0
+    liability_options = []
+    clearOutputFile(constants.F_NAME)
 
-    # %%
-    #######################################
-    ## Filter out the next 5 upcoming games
-    #######################################
-    market_catalogue_filter = filters.market_filter(
-        event_ids=fc_venue_ids)
+    while(completion_cnt < constants.NUM_GAMES):
+        # %%
+        #######################################
+        # Filter out only greyhoud races
+        #######################################
+        gb_gh_events = filter_gh_races(constants.GH_RACING_ID)#Greyhound racing ID
 
-    market_catalogues = get_upcoming_games(5, market_catalogue_filter) 
+        # %%
+        #######################################
+        # Extract a list of IDs for the forecast markets
+        #######################################
+        fc_venue_ids = []
+        fc_venue_names = []
+        for eventObj in gb_gh_events:
+            fc_venue_ids.append(eventObj.event.id)
+            fc_venue_names.append(eventObj.event.name)
 
-    # %%
-    #######################################
-    ## Check the start time of the next game
-    ## and sleep until 15 seconds before the game
-    #######################################
-    start_time, time_gap, myRaceID, myRaceVenue = utils.get_next_market(market_catalogues)
-    # assert myRaceID == 0, "ERROR: myRaceID = 0" #TODO: remove in production
+        fc_venue_ids, fc_venue_names
 
-    if(time_gap > datetime.timedelta(seconds=constants.PREBET_DELAY)):
-        time_to_sleep = (time_gap - datetime.timedelta(seconds=constants.PREBET_DELAY)).seconds
-        print("Sleeping for " + str(time_to_sleep) + " seconds")
-        time.sleep(time_to_sleep) #TODO
-        print("Sleeping done")
-    else:
-        print("Don't need to sleep")
+        # %%
+        #######################################
+        ## Filter out the next 5 upcoming games
+        #######################################
+        market_catalogue_filter = filters.market_filter(
+            event_ids=fc_venue_ids)
 
-    #######################################
-    # Get odds from NEDS
-    #######################################
-    lay_selection_index = utils.choose_lay_option_neds(myRaceVenue)
+        market_catalogues = get_upcoming_games(5, market_catalogue_filter) 
 
-    if(lay_selection_index == -1):
-        print("ERROR!!! 2 same odds found")
-        print("Moving to next match")
-        # assert()
-        continue
-        
-    elif(lay_selection_index == -2):
-        print("ERROR!!! less than 6 runners")
-        # assert()
-        print("Moving to next match")
-        continue
+        # %%
+        #######################################
+        ## Check the start time of the next game
+        ## and sleep until 15 seconds before the game
+        #######################################
+        start_time, time_gap, myRaceID, myRaceVenue = utils.get_next_market(market_catalogues)
+        # assert myRaceID == 0, "ERROR: myRaceID = 0" #TODO: remove in production
 
-    elif(lay_selection_index == -3):
-        print("ERROR!!! NEDS API failed")
-        print("Moving to next match")
-        continue
-    else:
-        print("Lay option found successfully")
-        print(lay_selection_index)
-
-    # %%
-    #######################################
-    # Get a list of lay options from betfair
-    #######################################
-    # Create a price filter. Get all traded and offer data
-    price_filter = filters.price_projection(
-        price_data=['EX_BEST_OFFERS']
-    )
-    lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
-
-    # %%
-    #######################################
-    # Choose the liability amount
-    # random from a list of 10 options
-    #######################################
-    if(len(liability_options) == 0):
-        # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
-        liability_options = [50, 50, 50, 50, 50, 50, 50, 50, 50, 1000] #not sure why this can't be moved into constants.py
-    print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
-
-    [liability_amount] = np.random.choice(liability_options, size=1)
-    print("Chosen Liability amount = $", liability_amount)
-
-    liability_options.remove(liability_amount)
-    print("liability_options [AFTER] = ", liability_options, ", LENGTH =", len(liability_options))
-
-    # %%
-    #######################################
-    # Choose order type (limit order or market_on_close order - choose the latter)
-    #######################################
-    order_filter = filters.limit_order(
-        price=str(fav_price),
-        persistence_type='LAPSE',
-        bet_target_type='PAYOUT',
-        bet_target_size=str(liability_amount) 
-    )
-    print(order_filter)
-
-    #######################################
-    # Create a place instruction filter
-    #######################################
-    instructions_filter = filters.place_instruction(
-        selection_id = str(lay_selection_id),
-        side="LAY",
-        order_type = "LIMIT", # fixed price order
-        limit_order=order_filter
-    )
-    print(instructions_filter)
-
-
-    # %%
-    #######################################
-    # Place the order
-    #######################################
-    order = trading.betting.place_orders(
-        market_id = myRaceID,
-        customer_strategy_ref='Naing_maker',
-        instructions=[instructions_filter]
-    )
-
-    # %%
-    #######################################
-    # Make sure the order is matched fully
-    #######################################
-    # utils.ensure_order_matched(myRaceID, lay_selection_index, price_filter)
-    fullyMatched_flag = False
-    try:
-        while fullyMatched_flag == False:
-            ## get the current order
-            current_orders = trading.betting.list_current_orders(
-                market_ids=[myRaceID])
-            single_current_order = current_orders._data['currentOrders'][0]
-            print(single_current_order)
-
-            unmatched_size = single_current_order['sizeRemaining']
-            print('unmatched size = ', unmatched_size)
-
-            ## if there's unmatched order, replace it with new price, else set the fullyMatched flag
-            if float(unmatched_size) != 0:
-                print("Order is not fully matched yet")
-
-                ## Get the new best Lay price
-                lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
-
-                ## Replace the unmatched order with the new price
-                replace_instructions_filter = filters.replace_instruction(
-                    bet_id= single_current_order['betId'],
-                    new_price= fav_price
-                )
-                print("replace intructions filter: ", replace_instructions_filter)
-
-                newOrder = trading.betting.replace_orders(
-                        market_id = myRaceID,
-                        customer_ref='Naing_maker_Replaced',
-                        instructions=[replace_instructions_filter]
-                    )
-
-                print("Replaced order report: ", newOrder)
-                time.sleep(5)
-            else:
-                print("Full order matched")
-                fullyMatched_flag = True
-    except IndexError:
-        print("The current orders might have been cleared since the race started")
-        completion_flag = True 
-        continue
-    except Exception as e:
-        print(e)
-        completion_flag = True # Set it True so the program can continue for the next game
-        continue
-    #######################################
-    # Check if the last bet has settled and note the result
-    # Only if the previous race is settled, start next game 
-    #######################################
-    settled_flag = False    
-    while settled_flag == False:
-        cleared_orders = trading.betting.list_cleared_orders(
-            bet_status="SETTLED",
-            market_ids=[myRaceID])
-
-        if len(cleared_orders._data['clearedOrders']) != 0:
-            settled_flag = True
-
-            # Create a DataFrame from the orders
-            betResult = pd.DataFrame(cleared_orders._data['clearedOrders'])
-            print(betResult)
-
-            betOutcome = betResult['betOutcome'][0]
-            profit = 0
-            for i in betResult['profit']:
-                profit = profit + float(i)
-
-            ## Record the results into a csv file
-            utils.write_to_file(constants.F_NAME, myRaceID, betOutcome, profit)
-
-            completion_flag = True # we are ready for next game
-            completion_cnt = completion_cnt + 1
-
+        if(time_gap > datetime.timedelta(seconds=constants.PREBET_DELAY)):
+            time_to_sleep = (time_gap - datetime.timedelta(seconds=constants.PREBET_DELAY)).seconds
+            print("Sleeping for " + str(time_to_sleep) + " seconds")
+            time.sleep(time_to_sleep) #TODO
+            print("Sleeping done")
         else:
-            print("Sleep 60 seconds before checking again if market is settled")
-            time.sleep(60) # TODO:Check again in 60 seconds
+            print("Don't need to sleep")
+
+        #######################################
+        # Get odds from NEDS
+        #######################################
+        lay_selection_index = utils.choose_lay_option_neds(myRaceVenue)
+
+        if(lay_selection_index == -1):
+            print("ERROR!!! 2 same odds found")
+            print("Moving to next match")
+            # assert()
+            print("********************************************************", end='\n\n\n')
+            continue
+            
+        elif(lay_selection_index == -2):
+            print("ERROR!!! less than 6 runners")
+            # assert()
+            print("Moving to next match")
+            print("********************************************************", end='\n\n\n')
+            continue
+
+        elif(lay_selection_index == -3):
+            print("ERROR!!! NEDS API failed")
+            print("Moving to next match")
+            print("********************************************************", end='\n\n\n')
+            continue
+        else:
+            print("Lay option found successfully = ", lay_selection_index)
+
+        # %%
+        #######################################
+        # Get a list of lay options from betfair
+        #######################################
+        # Create a price filter. Get all traded and offer data
+        price_filter = filters.price_projection(
+            price_data=['EX_BEST_OFFERS']
+        )
+        try:
+            lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
+        except Exception as e:
+            print("********************************************************")
+            print("Error occurred in choose_lay_option_bf()")
+            print(e)
+            print("********************************************************", end='\n\n\n')
+            continue
+
+        # %%
+        #######################################
+        # Choose the liability amount
+        # random from a list of 10 options
+        #######################################
+        if(len(liability_options) == 0):
+            # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
+            liability_options = [50, 50, 50, 50, 50, 50, 50, 50, 50, 1000] #not sure why this can't be moved into constants.py
+        print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
+
+        [liability_amount] = np.random.choice(liability_options, size=1)
+        print("Chosen Liability amount = $", liability_amount)
+
+        liability_options.remove(liability_amount)
+        print("liability_options [AFTER] = ", liability_options, ", LENGTH =", len(liability_options))
+
+        # %%
+        #######################################
+        # Choose order type (limit order or market_on_close order - choose the latter)
+        #######################################
+        order_filter = filters.limit_order(
+            price=str(fav_price),
+            persistence_type='LAPSE',
+            bet_target_type='PAYOUT',
+            bet_target_size=str(liability_amount) 
+        )
+        print(order_filter)
+
+        #######################################
+        # Create a place instruction filter
+        #######################################
+        instructions_filter = filters.place_instruction(
+            selection_id = str(lay_selection_id),
+            side="LAY",
+            order_type = "LIMIT", # fixed price order
+            limit_order=order_filter
+        )
+        print(instructions_filter)
 
 
-    
-    print("Sleeping for some time before starting the next game")
-    time.sleep(np.random.randint(60,180))
-    
+        # %%
+        #######################################
+        # Place the order
+        #######################################
+        order = trading.betting.place_orders(
+            market_id = myRaceID,
+            customer_strategy_ref='Naing_maker',
+            instructions=[instructions_filter]
+        )
+
+        # %%
+        #######################################
+        # Make sure the order is matched fully
+        #######################################
+        # utils.ensure_order_matched(myRaceID, lay_selection_index, price_filter)
+        fullyMatched_flag = False
+        try:
+            while fullyMatched_flag == False:
+                ## get the current order
+                current_orders = trading.betting.list_current_orders(
+                    market_ids=[myRaceID])
+                single_current_order = current_orders._data['currentOrders'][0]
+                print(single_current_order)
+
+                unmatched_size = single_current_order['sizeRemaining']
+                print('unmatched size = ', unmatched_size)
+
+                ## if there's unmatched order, replace it with new price, else set the fullyMatched flag
+                if float(unmatched_size) != 0:
+                    print("Order is not fully matched yet")
+
+                    ## Get the new best Lay price
+                    lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
+
+                    ## Replace the unmatched order with the new price
+                    replace_instructions_filter = filters.replace_instruction(
+                        bet_id= single_current_order['betId'],
+                        new_price= fav_price
+                    )
+                    print("replace intructions filter: ", replace_instructions_filter)
+
+                    newOrder = trading.betting.replace_orders(
+                            market_id = myRaceID,
+                            customer_ref='Naing_maker_Replaced',
+                            instructions=[replace_instructions_filter]
+                        )
+
+                    print("Replaced order report: ", newOrder)
+                    time.sleep(5)
+                else:
+                    print("Full order matched")
+                    fullyMatched_flag = True
+        except IndexError as e:
+            print("********************************************************")
+            print("The current orders might have been cleared since the race started")
+            print(e)
+            print("********************************************************", end='\n\n\n')
+            continue
+        except Exception as e:
+            print(e)
+            print("********************************************************", end='\n\n\n')
+            continue
+        #######################################
+        # Check if the last bet has settled and note the result
+        # Only if the previous race is settled, start next game 
+        #######################################
+        settled_flag = False    
+        try:
+            while settled_flag == False:
+                cleared_orders = trading.betting.list_cleared_orders(
+                    bet_status="SETTLED",
+                    market_ids=[myRaceID])
+
+                if len(cleared_orders._data['clearedOrders']) != 0:
+                    settled_flag = True
+
+                    # Create a DataFrame from the orders
+                    betResult = pd.DataFrame(cleared_orders._data['clearedOrders'])
+                    print(betResult)
+
+                    betOutcome = betResult['betOutcome'][0]
+                    profit = 0
+                    for i in betResult['profit']:
+                        profit = profit + float(i)
+
+                    ## Record the results into a csv file
+                    utils.write_to_file(constants.F_NAME, myRaceID, betOutcome, profit, start_time)
+
+                    completion_cnt = completion_cnt + 1
+
+                else:
+                    print("Sleep 60 seconds before checking again if market is settled")
+                    time.sleep(60) # TODO:Check again in 60 seconds
+        except Exception as e:
+            print("********************************************************")
+            print("Writing to file FAILED")
+            print(e)
+            print("********************************************************", end='\n\n\n')
+            continue
+
+
+        randomSleep = np.random.randint(60,180)
+        print("Sleeping for some time before starting the next game = ", randomSleep, " seconds")
+        time.sleep(randomSleep)
+        
 
 
