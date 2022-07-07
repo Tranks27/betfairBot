@@ -15,24 +15,6 @@ from IPython.display import display
 import utils
 import constants
 
-<<<<<<< HEAD
-# Change this certs path to wherever you're storing your certificates
-certs_path = str(os.getcwd()) + "/certs/"
-# Change these login details to your own
-my_username = constants.USERNAME
-my_password = constants.PASSWORD
-# my_app_key = constants.API_KEY_DEMO #demo
-my_app_key = constants.API_KEY_LIVE #live
-
-trading = betfairlightweight.APIClient(username=my_username,
-                                       password=my_password,
-                                       app_key=my_app_key,
-                                       certs=certs_path)
-
-trading.login()
-
-=======
->>>>>>> fe77b639ed0de4d869deaf3a3a59d20ff0d0ad63
 # %%
 def filter_gh_races(gh_racing_id):
     greyhound_racing_filter = filters.market_filter(
