@@ -25,16 +25,16 @@ def process_runner_books(runner_books):
     :param runner_books:
     :return:
     '''
-    best_back_prices = [runner_book.ex.available_to_back[0].price
-                        if runner_book.ex.available_to_back
-                        else 1.01
-                        for runner_book
-                        in runner_books]
-    best_back_sizes = [runner_book.ex.available_to_back[0].size
-                       if runner_book.ex.available_to_back
-                       else 1.01
-                       for runner_book
-                       in runner_books]
+    # best_back_prices = [runner_book.ex.available_to_back[0].price
+    #                     if runner_book.ex.available_to_back
+    #                     else 1.01
+    #                     for runner_book
+    #                     in runner_books]
+    # best_back_sizes = [runner_book.ex.available_to_back[0].size
+    #                    if runner_book.ex.available_to_back
+    #                    else 1.01
+    #                    for runner_book
+    #                    in runner_books]
 
     best_lay_prices = [runner_book.ex.available_to_lay[0].price
                        if runner_book.ex.available_to_lay
@@ -51,20 +51,20 @@ def process_runner_books(runner_books):
     last_prices_traded = [runner_book.last_price_traded for runner_book in runner_books]
     total_matched = [runner_book.total_matched for runner_book in runner_books]
     statuses = [runner_book.status for runner_book in runner_books]
-    scratching_datetimes = [runner_book.removal_date for runner_book in runner_books]
-    adjustment_factors = [runner_book.adjustment_factor for runner_book in runner_books]
+    # scratching_datetimes = [runner_book.removal_date for runner_book in runner_books]
+    # adjustment_factors = [runner_book.adjustment_factor for runner_book in runner_books]
 
     df = pd.DataFrame({
         'Selection ID': selection_ids,
-        'Best Back Price': best_back_prices,
-        'Best Back Size': best_back_sizes,
+        # 'Best Back Price': best_back_prices,
+        # 'Best Back Size': best_back_sizes,
         'Best Lay Price': best_lay_prices,
         'Best Lay Size': best_lay_sizes,
         'Last Price Traded': last_prices_traded,
         'Total Matched': total_matched,
         'Status': statuses,
-        'Removal Date': scratching_datetimes,
-        'Adjustment Factor': adjustment_factors
+        # 'Removal Date': scratching_datetimes,
+        # 'Adjustment Factor': adjustment_factors
     })
     return df
 
@@ -75,16 +75,17 @@ def choose_lay_option_neds(venueName):
     odds_arr = get_odds(venueName) # try getting the odds
     if(len(odds_arr) == 0): # try a second time if result is empty
         odds_arr = get_odds(venueName)
-    print(odds_arr)
+    print("odds_arr = ", odds_arr)
 
     ## Check if there are 6 runners
-    if len(odds_arr) != 6:
+    if len(odds_arr) != 6 or '99' in odds_arr:
         print('Length of odds_arr = ' + str(len(odds_arr)))
+        print("odds_arr = ", odds_arr)
         return -2
 
     ## Sort out the odds_arr
     sorted_odds = sorted(odds_arr,key=float)
-    print(sorted_odds)
+    print("sorted_odds = ", sorted_odds)
     pos1 = odds_arr.index(sorted_odds[0]) 
     pos2 = odds_arr.index(sorted_odds[1]) 
     pos3 = odds_arr.index(sorted_odds[2]) 
@@ -105,7 +106,7 @@ def choose_lay_option_neds(venueName):
 
     # res = [x+1 for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
     res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
-    print(res[0])
+    print("lay_id index = ", res[0])
     return res[0]
 
 ###
@@ -113,16 +114,15 @@ def choose_lay_option_neds(venueName):
 ###
 def get_next_market(market_catalogues):
     timeNow = (datetime.datetime.now(pytz.timezone("Europe/London"))-datetime.timedelta(hours=1)) ## minus 1 hr due to daylight savings maybe?
-    print("Time Now: ")
-    print(timeNow.strftime("%Y-%m-%d %T"))
+    print("Time Now: ", timeNow.strftime("%Y-%m-%d %T"))
     ## TODO Compare the list of markets - if timeNow is less than market start time (ie. market hasn't started yet), pick it. Otherwise, skip
-    time1 = timeNow.replace(tzinfo=pytz.UTC)
+    timeNow = timeNow.replace(tzinfo=pytz.UTC)
 
     myRaceID = 0
     myRaceVenue = ""
     for marketObj in market_catalogues:
-        time2 = marketObj.market_start_time.replace(tzinfo=pytz.UTC)
-        if time1 < time2:
+        startTime = marketObj.market_start_time.replace(tzinfo=pytz.UTC)
+        if timeNow < startTime:
             ## Found the race to bet
             myRaceID = marketObj.market_id # store the market id
             myRaceVenue = marketObj.event.venue.lower().replace(" ", "-") # store the venue
@@ -130,10 +130,10 @@ def get_next_market(market_catalogues):
 
             break
         
-    print("Market Start Time: " + str(time2))
+    print("Market Start Time: " + str(startTime))
     
     ##TODO Sleep until x seconds before the start time
-    return time2, time2-time1, myRaceID, myRaceVenue
+    return startTime, startTime-timeNow, myRaceID, myRaceVenue
 
 ###
 # Get the runner in box 1 
@@ -231,7 +231,7 @@ def get_neds_odds(venueName):
     return odds
 
 def get_odds(venueName):
-    venueName_vars = [venueName+"-bags", venueName+"-am", venueName]
+    venueName_vars = [venueName+"-bags", venueName, venueName+"-am"]
     for i in venueName_vars:
         odds_arr = get_neds_odds(i)
         if(len(odds_arr) != 0):
@@ -243,7 +243,7 @@ def get_odds(venueName):
     return odds_arr
 
 ## Write result to a csv file
-def write_to_file(fname, myRaceID, betOutcome, profit):
+def write_to_file(fname, myRaceID, betOutcome, profit, startTime):
     with open(fname, 'a+') as f:
         writer = csv.writer(f)
         ## check if the file is empty: if NO, write newline char, if YES do nothing,
@@ -252,9 +252,9 @@ def write_to_file(fname, myRaceID, betOutcome, profit):
         if len(data) > 0:
             f.write("\n")
         else:
-            writer.writerow(['Race ID', 'Bet Outcome', 'Profit/Loss'])
+            writer.writerow(['Start Time', 'Race ID', 'Bet Outcome', 'Profit/Loss'])
         
-        writer.writerow([myRaceID, betOutcome, profit])
+        writer.writerow([startTime, myRaceID, betOutcome, profit])
 
 if __name__ == "__main__":
     venueName = 'crayford-bags'
