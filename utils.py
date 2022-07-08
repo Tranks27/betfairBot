@@ -77,8 +77,8 @@ def choose_lay_option_neds(venueName):
         odds_arr = get_odds(venueName)
     print("odds_arr = ", odds_arr)
 
-    ## Check if there are 6 runners
-    if len(odds_arr) != 6 or '99' in odds_arr:
+    ## Check if there are 6 runners or no price is advertised
+    if len(odds_arr) != 6 or '99' in odds_arr or 'SP' in odds_arr:
         print('Length of odds_arr = ' + str(len(odds_arr)))
         print("odds_arr = ", odds_arr)
         return -2

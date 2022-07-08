@@ -105,6 +105,12 @@ def clearOutputFile(fname):
           
     return
 
+def failGracefully(error='N/A'):
+    print("Error: ", error)
+    print("Moving to next match")
+    print("********************************************************", end='\n\n\n')
+
+
 if __name__ == "__main__":
     # Change this certs path to wherever you're storing your certificates
     certs_path = str(os.getcwd()) + "/certs/"
@@ -124,10 +130,15 @@ if __name__ == "__main__":
     ## TODO
     debug = True # Print the data frames
     completion_cnt = 0
+    success_flag = True
     liability_options = []
     clearOutputFile(constants.F_NAME)
 
     while(completion_cnt < constants.NUM_GAMES):
+        ## if some error occured, sleep for a while not to repeat the same game
+        if success_flag != True:
+            time.sleep(30)
+            success_flag = True
         # %%
         #######################################
         # Filter out only greyhoud races
@@ -178,22 +189,17 @@ if __name__ == "__main__":
 
         if(lay_selection_index == -1):
             print("ERROR!!! 2 same odds found")
-            print("Moving to next match")
-            # assert()
-            print("********************************************************", end='\n\n\n')
+            failGracefully()
             continue
             
         elif(lay_selection_index == -2):
             print("ERROR!!! less than 6 runners")
-            # assert()
-            print("Moving to next match")
-            print("********************************************************", end='\n\n\n')
+            failGracefully()
             continue
 
         elif(lay_selection_index == -3):
             print("ERROR!!! NEDS API failed")
-            print("Moving to next match")
-            print("********************************************************", end='\n\n\n')
+            failGracefully()
             continue
         else:
             print("Lay option found successfully = ", lay_selection_index)
@@ -209,10 +215,8 @@ if __name__ == "__main__":
         try:
             lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
         except Exception as e:
-            print("********************************************************")
             print("Error occurred in choose_lay_option_bf()")
-            print(e)
-            print("********************************************************", end='\n\n\n')
+            failGracefully(e)
             continue
 
         # %%
@@ -307,15 +311,13 @@ if __name__ == "__main__":
                 else:
                     print("Full order matched")
                     fullyMatched_flag = True
+                    success_flag = True
         except IndexError as e:
-            print("********************************************************")
             print("The current orders might have been cleared since the race started")
-            print(e)
-            print("********************************************************", end='\n\n\n')
+            failGracefully(e)
             continue
         except Exception as e:
-            print(e)
-            print("********************************************************", end='\n\n\n')
+            failGracefully(e)
             continue
         #######################################
         # Check if the last bet has settled and note the result
@@ -344,15 +346,14 @@ if __name__ == "__main__":
                     utils.write_to_file(constants.F_NAME, myRaceID, betOutcome, profit, start_time)
 
                     completion_cnt = completion_cnt + 1
+                    
 
                 else:
                     print("Sleep 60 seconds before checking again if market is settled")
                     time.sleep(60) # TODO:Check again in 60 seconds
         except Exception as e:
-            print("********************************************************")
             print("Writing to file FAILED")
-            print(e)
-            print("********************************************************", end='\n\n\n')
+            failGracefully(e)
             continue
 
 
