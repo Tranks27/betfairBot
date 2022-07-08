@@ -11,7 +11,7 @@ import time
 import datetime
 import pytz
 import csv
-
+from app import logging
 #########################################################
 ## External functions
 #########################################################
@@ -75,25 +75,25 @@ def choose_lay_option_neds(venueName):
     odds_arr = get_odds(venueName) # try getting the odds
     if(len(odds_arr) == 0): # try a second time if result is empty
         odds_arr = get_odds(venueName)
-    print("odds_arr = ", odds_arr)
+    logging.info("odds_arr = %s", odds_arr)
 
     ## Check if there are 6 runners or no price is advertised
     if len(odds_arr) != 6 or '99' in odds_arr or 'SP' in odds_arr:
-        print('Length of odds_arr = ' + str(len(odds_arr)))
-        print("odds_arr = ", odds_arr)
+        logging.info('Length of odds_arr = %d', len(odds_arr))
+        logging.info("odds_arr = %s", odds_arr)
         return -2
 
     ## Sort out the odds_arr
     sorted_odds = sorted(odds_arr,key=float)
-    print("sorted_odds = ", sorted_odds)
+    logging.info("sorted_odds = %s", sorted_odds)
     pos1 = odds_arr.index(sorted_odds[0]) 
     pos2 = odds_arr.index(sorted_odds[1]) 
     pos3 = odds_arr.index(sorted_odds[2]) 
-    print("Forecast = " + str(pos1+1) + "-" + str(pos2+1))
+    logging.info("Forecast = %d - %d", pos1+1, pos2+1)
 
     ## TODO: check only if the 2 lowest odds are similar
     if pos1 == pos2 or pos2 == pos3:
-        print('Two of the 3 smallest odds are the same : pos1 = ' + str(pos1) + ',pos2 = ' + str(pos2)+ ',pos3 = ' + str(pos3))
+        logging.info('Two of the 3 smallest odds are the same : pos1 = %d, pos2 = %d, pos3 = %d', pos1, pos2, pos3)
         return -1
 
     ## Choose the index of the lay selection out of 30 options or less
@@ -106,7 +106,7 @@ def choose_lay_option_neds(venueName):
 
     # res = [x+1 for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
     res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
-    print("lay_id index = ", res[0])
+    logging.info("lay_id index = %s", res[0])
     return res[0]
 
 ###
@@ -114,7 +114,7 @@ def choose_lay_option_neds(venueName):
 ###
 def get_next_market(market_catalogues):
     timeNow = (datetime.datetime.now(pytz.timezone("Europe/London"))-datetime.timedelta(hours=1)) ## minus 1 hr due to daylight savings maybe?
-    print("Time Now: ", timeNow.strftime("%Y-%m-%d %T"))
+    logging.info("Time Now: %s", timeNow.strftime("%Y-%m-%d %T"))
     ## TODO Compare the list of markets - if timeNow is less than market start time (ie. market hasn't started yet), pick it. Otherwise, skip
     timeNow = timeNow.replace(tzinfo=pytz.UTC)
 
@@ -126,11 +126,11 @@ def get_next_market(market_catalogues):
             ## Found the race to bet
             myRaceID = marketObj.market_id # store the market id
             myRaceVenue = marketObj.event.venue.lower().replace(" ", "-") # store the venue
-            print("Found the market to lay: Name = " + myRaceVenue + " id = " + str(myRaceID))
+            logging.info("Found the market to lay: Name = %s, id = %s", myRaceVenue, myRaceID)
 
             break
         
-    print("Market Start Time: " + str(startTime))
+    logging.info("Market Start Time: %s", startTime)
     
     ##TODO Sleep until x seconds before the start time
     return startTime, startTime-timeNow, myRaceID, myRaceVenue
@@ -156,7 +156,7 @@ def get_neds_odds(venueName):
 
     # venueName = 'newcastle-bags'
     url = "https://www.neds.com.au/racing/" + venueName
-    print("Next Neds URL to try = ", url)
+    logging.info("Next Neds URL to try = %s", url)
     driver.get(url)
     time.sleep(2)
     try:
@@ -180,11 +180,10 @@ def get_neds_odds(venueName):
         if(line == 'RUNNERS' or flag_part2 == True):
             flag_part2 = True
             data_arr_part2.append(str(''.join(line)))
-        # print(line)
 
-    print(data_arr_part1)
-    print("end of part1")
-    print(data_arr_part2)
+    logging.debug(data_arr_part1)
+    logging.debug("end of part1")
+    logging.debug(data_arr_part2)
 
 
     ##############
@@ -222,9 +221,8 @@ def get_neds_odds(venueName):
             else:
                 odds.append(str(data_arr_part2[i+2])) 
 
-    # print(odds)
     if odds == []:
-        print("Neds api failed")
+        logging.error("Neds api failed")
 
     driver.close()
 
@@ -235,7 +233,7 @@ def get_odds(venueName):
     for i in venueName_vars:
         odds_arr = get_neds_odds(i)
         if(len(odds_arr) != 0):
-            print("True Venue Name = " + i)
+            logging.info("True Venue Name = %s", i)
             break # found it
         
         time.sleep(3)

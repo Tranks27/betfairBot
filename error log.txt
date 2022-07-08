@@ -1,0 +1,1031 @@
+Cleared contents from the output file ->  Profit_Loss.csv
+                   Event Name  Event ID  ...           Open Date Market Count
+0       Kinsley (F/C) 8th Jul  31577456  ... 2022-07-08 10:06:00            3
+1    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            4
+2       Swindon (F/C) 8th Jul  31577460  ... 2022-07-08 10:13:00            3
+3        Harlow (F/C) 8th Jul  31577479  ... 2022-07-08 09:12:00            2
+4     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+5  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            4
+6      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           14
+7       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           14
+8       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            5
+9          Hove (F/C) 8th Jul  31577486  ... 2022-07-08 09:17:00            2
+
+[10 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched    Venue
+0    Forecast  1.200859685 2022-07-08 12:17:00    1079.817132   Harlow
+1    Forecast  1.200859413 2022-07-08 12:21:00      10.537200  Kinsley
+2    Forecast  1.200859747 2022-07-08 12:24:00       0.000000     Hove
+3    Forecast  1.200859492 2022-07-08 12:28:00       0.000000  Swindon
+4    Forecast  1.200859686 2022-07-08 12:33:00       0.000000   Harlow
+Time Now:  2022-07-08 12:20:07
+Found the market to lay: Name = kinsley id = 1.200859413
+Market Start Time: 2022-07-08 12:21:00+00:00
+Sleeping for 32 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/kinsley-bags
+['KINSLEY BAGS', 'GOOD', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '462m', 'Race 10', '16s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'SPEEDMAP', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Kinsley Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Ballymac Ifnot (1)', 'T: B Heaton', '5.00', '2.45', '-', '2. Charlotte Amalie (2)', 'T: D J Hammond', '4.50', '2.30', '-', '3. Fearmore Diva (3)', 'T: I Zivkovic', '5.00', '2.45', '-', '4. No Flyer (4)', 'T: M J Siddall', '3.80', '2.05', '-', '5. Rural Surprise (5)', 'T: S Smith', '4.20', '2.15', '-', '6. Airlie House (6)', 'T: J Robinson', '4.20', '2.15', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.90', 'VS', 'EVENS', '3 RUNNERS', '1.65', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'SALE  R11', 'KWIK TIP BINS (250+RANK)', '440M', 'Jumps in', '2m 16s', 'NEXT TO GO']
+True Venue Name = kinsley-bags
+odds_arr =  ['5.00', '4.50', '5.00', '3.80', '4.20', '4.20']
+sorted_odds =  ['3.80', '4.20', '4.20', '4.50', '5.00', '5.00']
+Forecast = 4-5
+Two of the 3 smallest odds are the same : pos1 = 3,pos2 = 4,pos3 = 4
+ERROR!!! 2 same odds found
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0       Kinsley (F/C) 8th Jul  31577456  ... 2022-07-08 10:06:00            3
+1    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            4
+2       Swindon (F/C) 8th Jul  31577460  ... 2022-07-08 10:13:00            3
+3        Harlow (F/C) 8th Jul  31577479  ... 2022-07-08 09:12:00            2
+4     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+5  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            4
+6      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           14
+7       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           14
+8       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            5
+9          Hove (F/C) 8th Jul  31577486  ... 2022-07-08 09:17:00            2
+
+[10 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched    Venue
+0    Forecast  1.200859685 2022-07-08 12:17:00            0.0   Harlow
+1    Forecast  1.200859413 2022-07-08 12:21:00            0.0  Kinsley
+2    Forecast  1.200859747 2022-07-08 12:24:00            0.0     Hove
+3    Forecast  1.200859492 2022-07-08 12:28:00            0.0  Swindon
+4    Forecast  1.200859686 2022-07-08 12:33:00            0.0   Harlow
+Time Now:  2022-07-08 12:20:44
+Found the market to lay: Name = kinsley id = 1.200859413
+Market Start Time: 2022-07-08 12:21:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/kinsley-bags
+['KINSLEY BAGS', 'GOOD', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '462m', 'Race 10', '11s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'SPEEDMAP', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Kinsley Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Ballymac Ifnot (1)', 'T: B Heaton', '5.50', '2.50', '-', '2. Charlotte Amalie (2)', 'T: D J Hammond', '4.60', '2.20', '-', '3. Fearmore Diva (3)', 'T: I Zivkovic', '6.00', '2.70', '-', '4. No Flyer (4)', 'T: M J Siddall', '3.90', '2.00', '-', '5. Rural Surprise (5)', 'T: S Smith', '4.20', '2.10', '-', '6. Airlie House (6)', 'T: J Robinson', '4.40', '2.15', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.95', 'VS', 'EVENS', '3 RUNNERS', '1.60', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'SALE  R11', 'KWIK TIP BINS (250+RANK)', '440M', 'Jumps in', '2m 11s', 'NEXT TO GO']
+True Venue Name = kinsley-bags
+odds_arr =  ['5.50', '4.60', '6.00', '3.90', '4.20', '4.40']
+sorted_odds =  ['3.90', '4.20', '4.40', '4.60', '5.50', '6.00']
+Forecast = 4-5
+lay_id index =  18
+Lay option found successfully =  18
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            26.0  ...          53.72  ACTIVE
+1       41419586            55.0  ...          17.26  ACTIVE
+2       41419587            36.0  ...          20.27  ACTIVE
+3       41419588            50.0  ...          13.63  ACTIVE
+4       41419589            60.0  ...          10.89  ACTIVE
+5       41419592            24.0  ...          55.10  ACTIVE
+6       41419593            36.0  ...          18.62  ACTIVE
+7       41419594            26.0  ...          35.00  ACTIVE
+8       41419595            34.0  ...          20.99  ACTIVE
+9       41419596            40.0  ...           3.51  ACTIVE
+10      41419599            60.0  ...          17.56  ACTIVE
+11      41419600            38.0  ...          17.55  ACTIVE
+12      41419601            48.0  ...           0.00  ACTIVE
+13      41419602            70.0  ...          17.33  ACTIVE
+14      41419603            80.0  ...           0.00  ACTIVE
+15      41419606            29.0  ...          47.45  ACTIVE
+16      41419607            21.0  ...          57.76  ACTIVE
+17      41419608            38.0  ...          20.08  ACTIVE
+18      41419609            25.0  ...          33.95  ACTIVE
+19      41419610            34.0  ...          13.28  ACTIVE
+20      41419613            32.0  ...          24.54  ACTIVE
+21      41419614            21.0  ...          53.01  ACTIVE
+22      41419615            40.0  ...           0.00  ACTIVE
+23      41419616            23.0  ...          46.22  ACTIVE
+24      41419617            27.0  ...           8.46  ACTIVE
+25      41419620            46.0  ...          17.31  ACTIVE
+26      41419621            29.0  ...          38.47  ACTIVE
+27      41419622            55.0  ...           6.98  ACTIVE
+28      41419623            32.0  ...           7.71  ACTIVE
+29      41419624            36.0  ...          14.85  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419609
+Chosen fav_price =  25.0
+liability_options [BEFORE] =  [50, 50, 50, 50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 10
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [50, 50, 50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 9
+{'price': '25.0', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419609', 'side': 'LAY', 'limitOrder': {'price': '25.0', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273478722395', 'marketId': '1.200859413', 'selectionId': 41419609, 'handicap': 0.0, 'priceSize': {'price': 25.0, 'size': 2.0}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T12:20:49.000Z', 'matchedDate': '2022-07-08T12:20:49.000Z', 'averagePriceMatched': 25.0, 'sizeMatched': 2.0, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577456  1.200859413  ...          2.0     2.0         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  125  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0       Kinsley (F/C) 8th Jul  31577456  ... 2022-07-08 10:06:00            2
+1    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            4
+2       Swindon (F/C) 8th Jul  31577460  ... 2022-07-08 10:13:00            3
+3        Harlow (F/C) 8th Jul  31577479  ... 2022-07-08 09:12:00            1
+4     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+5  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            5
+6      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           14
+7       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           14
+8       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            5
+9          Hove (F/C) 8th Jul  31577486  ... 2022-07-08 09:17:00            2
+
+[10 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched    Venue
+0    Forecast  1.200859747 2022-07-08 12:24:00            0.0     Hove
+1    Forecast  1.200859492 2022-07-08 12:28:00            0.0  Swindon
+2    Forecast  1.200859686 2022-07-08 12:33:00            0.0   Harlow
+3    Forecast  1.200859414 2022-07-08 12:36:00            0.0  Kinsley
+4    Forecast  1.200859748 2022-07-08 12:39:00            0.0     Hove
+Time Now:  2022-07-08 12:25:58
+Found the market to lay: Name = swindon id = 1.200859492
+Market Start Time: 2022-07-08 12:28:00+00:00
+Sleeping for 101 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/swindon-bags
+['SWINDON BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '476m', 'Race 10', '16s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Swindon Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. No Better Boy (1)', 'T: T Kibble', '7.50', '3.00', '-', '2. Ballymac Seamie (2)', 'T: A M Kibble', '7.00', '2.90', '-', '3. Bellini (3)', 'T: A M Kibble', '2.90', '1.65', '-', '4. Ravenswell Bob (4)', 'T: P R Foster', '4.00', '2.00', '-', '5. Ashway Tommy (5)', 'T: A G Rawlings', '3.50', '1.85', '-', '6. Dundrum Blake (6)', 'T: P R Foster', '7.50', '3.00', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.45', 'VS', 'EVENS', '3 RUNNERS', '2.20', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'GLOUCESTER PARK  R8', '3YO C&G WESTSIRED (L) MS PACE (SKY1)', '2130M', 'Jumps in', '-1m 44s', 'NEXT TO GO']
+True Venue Name = swindon-bags
+odds_arr =  ['7.50', '7.00', '2.90', '4.00', '3.50', '7.50']
+sorted_odds =  ['2.90', '3.50', '4.00', '7.00', '7.50', '7.50']
+Forecast = 3-5
+lay_id index =  13
+Lay option found successfully =  13
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            95.0  ...           3.12  ACTIVE
+1       41419586            55.0  ...          36.33  ACTIVE
+2       41419587            70.0  ...          84.66  ACTIVE
+3       41419588            90.0  ...           3.89  ACTIVE
+4       41419589           170.0  ...           1.64  ACTIVE
+5       41419592            95.0  ...          17.76  ACTIVE
+6       41419593            34.0  ...          29.26  ACTIVE
+7       41419594            48.0  ...         191.41  ACTIVE
+8       41419595            55.0  ...           7.02  ACTIVE
+9       41419596           100.0  ...           0.00  ACTIVE
+10      41419599            22.0  ...          34.90  ACTIVE
+11      41419600            23.0  ...          18.72  ACTIVE
+12      41419601            13.0  ...         313.73  ACTIVE
+13      41419602            14.0  ...          26.73  ACTIVE
+14      41419603            28.0  ...           9.52  ACTIVE
+15      41419606            40.0  ...          24.97  ACTIVE
+16      41419607            42.0  ...          71.98  ACTIVE
+17      41419608            16.0  ...          54.27  ACTIVE
+18      41419609            19.5  ...          29.91  ACTIVE
+19      41419610            38.0  ...          80.78  ACTIVE
+20      41419613            40.0  ...          11.81  ACTIVE
+21      41419614            42.0  ...          14.04  ACTIVE
+22      41419615            15.5  ...          51.41  ACTIVE
+23      41419616            18.5  ...         253.95  ACTIVE
+24      41419617            36.0  ...          10.54  ACTIVE
+25      41419620           120.0  ...          10.53  ACTIVE
+26      41419621            95.0  ...           0.00  ACTIVE
+27      41419622            46.0  ...          11.51  ACTIVE
+28      41419623            40.0  ...         144.53  ACTIVE
+29      41419624            55.0  ...           0.00  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419602
+Chosen fav_price =  14.0
+liability_options [BEFORE] =  [50, 50, 50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 9
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [50, 50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 8
+{'price': '14.0', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419602', 'side': 'LAY', 'limitOrder': {'price': '14.0', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273479296893', 'marketId': '1.200859492', 'selectionId': 41419602, 'handicap': 0.0, 'priceSize': {'price': 14.0, 'size': 3.57}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T12:27:44.000Z', 'matchedDate': '2022-07-08T12:27:44.000Z', 'averagePriceMatched': 14.0, 'sizeMatched': 3.57, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577460  1.200859492  ...         3.57    3.57         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  177  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0       Kinsley (F/C) 8th Jul  31577456  ... 2022-07-08 10:06:00            2
+1    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            5
+2       Swindon (F/C) 8th Jul  31577460  ... 2022-07-08 10:13:00            2
+3        Harlow (F/C) 8th Jul  31577479  ... 2022-07-08 09:12:00            1
+4     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+5  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            5
+6      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           14
+7       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           14
+8       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            5
+9          Hove (F/C) 8th Jul  31577486  ... 2022-07-08 09:17:00            1
+
+[10 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched     Venue
+0    Forecast  1.200859686 2022-07-08 12:33:00         7.0248    Harlow
+1    Forecast  1.200859414 2022-07-08 12:36:00         0.0000   Kinsley
+2    Forecast  1.200859748 2022-07-08 12:39:00         0.0000      Hove
+3    Forecast  1.200859493 2022-07-08 12:44:00         0.0000   Swindon
+4    Forecast  1.200859823 2022-07-08 12:49:00         0.0000  Crayford
+Time Now:  2022-07-08 12:34:45
+Found the market to lay: Name = kinsley id = 1.200859414
+Market Start Time: 2022-07-08 12:36:00+00:00
+Sleeping for 54 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/kinsley-bags
+['KINSLEY BAGS', 'GOOD', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '462m', 'Race 11', '16s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'SPEEDMAP', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Kinsley Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Elegant Danny (1)', 'T: P A Holmes', '5.00', '2.30', '44266', '2. Ballymac Skyler (2)', 'T: J G Hurst', '8.00', '3.20', '-', '3. Highview Heather (3)', 'T: B Heaton', '3.90', '1.95', '-', '4. Glaise Power (4)', 'T: M N May', '6.50', '2.80', '-', '5. Coonough Chimes (5)', 'T: P Taylor', '6.00', '2.60', '-', '6. Paradise Axel (6)', 'T: M N May', '2.50', '1.50', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.85', 'VS', 'EVENS', '3 RUNNERS', '1.70', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'LYCKSELE  R7', 'VASTERBOTTEN MELLANBYGDEN - KALLBLODSPOKALEN, FINAL', '2140M', 'Jumps in', '-5m', 'NEXT TO GO']
+True Venue Name = kinsley-bags
+odds_arr =  ['5.00', '8.00', '3.90', '6.50', '6.00', '2.50']
+sorted_odds =  ['2.50', '3.90', '5.00', '6.00', '6.50', '8.00']
+Forecast = 6-3
+lay_id index =  27
+Lay option found successfully =  27
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            60.0  ...           7.03  ACTIVE
+1       41419586            29.0  ...          10.53  ACTIVE
+2       41419587           180.0  ...           0.00  ACTIVE
+3       41419588           100.0  ...           0.00  ACTIVE
+4       41419589            26.0  ...          58.21  ACTIVE
+5       41419592           150.0  ...           7.02  ACTIVE
+6       41419593           130.0  ...           7.02  ACTIVE
+7       41419594           250.0  ...           7.02  ACTIVE
+8       41419595           370.0  ...           3.51  ACTIVE
+9       41419596           120.0  ...          21.07  ACTIVE
+10      41419599            22.0  ...          46.64  ACTIVE
+11      41419600            75.0  ...           7.02  ACTIVE
+12      41419601            32.0  ...          13.03  ACTIVE
+13      41419602            30.0  ...          40.68  ACTIVE
+14      41419603            15.0  ...          74.04  ACTIVE
+15      41419606           170.0  ...           0.00  ACTIVE
+16      41419607           230.0  ...           7.02  ACTIVE
+17      41419608           120.0  ...           0.00  ACTIVE
+18      41419609           130.0  ...           0.00  ACTIVE
+19      41419610            46.0  ...          21.07  ACTIVE
+20      41419613           100.0  ...           0.00  ACTIVE
+21      41419614           260.0  ...           0.00  ACTIVE
+22      41419615            60.0  ...           0.00  ACTIVE
+23      41419616           170.0  ...           0.00  ACTIVE
+24      41419617            23.0  ...          49.17  ACTIVE
+25      41419620            14.5  ...          65.27  ACTIVE
+26      41419621            27.0  ...          25.23  ACTIVE
+27      41419622            12.5  ...          40.43  ACTIVE
+28      41419623            21.0  ...          11.88  ACTIVE
+29      41419624            14.5  ...          17.56  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419622
+Chosen fav_price =  12.5
+liability_options [BEFORE] =  [50, 50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 8
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 7
+{'price': '12.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419622', 'side': 'LAY', 'limitOrder': {'price': '12.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273479972888', 'marketId': '1.200859414', 'selectionId': 41419622, 'handicap': 0.0, 'priceSize': {'price': 12.5, 'size': 4.0}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T12:35:44.000Z', 'matchedDate': '2022-07-08T12:35:44.000Z', 'averagePriceMatched': 12.5, 'sizeMatched': 4.0, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577456  1.200859414  ...          4.0     4.0         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  105  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0       Kinsley (F/C) 8th Jul  31577456  ... 2022-07-08 10:06:00            1
+1    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            5
+2       Swindon (F/C) 8th Jul  31577460  ... 2022-07-08 10:13:00            2
+3     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+4  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            5
+5      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           14
+6       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           14
+7       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            6
+8          Hove (F/C) 8th Jul  31577486  ... 2022-07-08 09:17:00            1
+
+[9 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched     Venue
+0    Forecast  1.200859748 2022-07-08 12:39:00            0.0      Hove
+1    Forecast  1.200859493 2022-07-08 12:44:00            0.0   Swindon
+2    Forecast  1.200859823 2022-07-08 12:49:00            0.0  Crayford
+3    Forecast  1.200859415 2022-07-08 12:51:00            0.0   Kinsley
+4    Forecast  1.200860045 2022-07-08 12:57:00            0.0   Monmore
+Time Now:  2022-07-08 12:39:32
+Found the market to lay: Name = swindon id = 1.200859493
+Market Start Time: 2022-07-08 12:44:00+00:00
+Sleeping for 247 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/swindon-bags
+['SWINDON BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '682m', 'Race 11', '14s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Swindon Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Archgrove Tiger (1)', 'T: D D Porter', '8.00', '3.20', '-', '2. Cnoc Lily (2)', 'T: J K Little', '4.20', '2.05', '-', '3. Port West Gale (3)', 'T: J A Danahar', '10.00', '3.70', '-', '4. Sheadogue Boots (4)', 'T: M W Jeans', '3.60', '1.85', '-', '5. Derramore Lark (5)', 'T: J K Little', '4.80', '2.20', '-', '6. Come On Buddy (6)', 'T: A G Rawlings', '3.10', '1.70', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '2.70', 'VS', 'EVENS', '3 RUNNERS', '1.30', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'SALE  R12', 'ROTTI SECURITY (250+RANK)', '440M', 'Jumps in', '1m 14s', 'NEXT TO GO']
+True Venue Name = swindon-bags
+odds_arr =  ['8.00', '4.20', '10.00', '3.60', '4.80', '3.10']
+sorted_odds =  ['3.10', '3.60', '4.20', '4.80', '8.00', '10.00']
+Forecast = 6-4
+lay_id index =  28
+Lay option found successfully =  28
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            55.0  ...          43.32  ACTIVE
+1       41419586           400.0  ...           3.51  ACTIVE
+2       41419587            60.0  ...          49.12  ACTIVE
+3       41419588            90.0  ...           7.02  ACTIVE
+4       41419589            50.0  ...          50.93  ACTIVE
+5       41419592            38.0  ...          19.45  ACTIVE
+6       41419593            75.0  ...          50.61  ACTIVE
+7       41419594            18.0  ...          38.99  ACTIVE
+8       41419595            32.0  ...         119.73  ACTIVE
+9       41419596            15.0  ...          68.95  ACTIVE
+10      41419599           580.0  ...           0.06  ACTIVE
+11      41419600           140.0  ...           2.18  ACTIVE
+12      41419601           120.0  ...           2.74  ACTIVE
+13      41419602           160.0  ...           0.00  ACTIVE
+14      41419603           110.0  ...           7.02  ACTIVE
+15      41419606            40.0  ...          35.13  ACTIVE
+16      41419607            23.0  ...          32.09  ACTIVE
+17      41419608            95.0  ...           0.00  ACTIVE
+18      41419609            23.0  ...          32.23  ACTIVE
+19      41419610            12.0  ...         164.66  ACTIVE
+20      41419613            70.0  ...          14.05  ACTIVE
+21      41419614            38.0  ...         110.09  ACTIVE
+22      41419615           160.0  ...           3.51  ACTIVE
+23      41419616            27.0  ...          17.56  ACTIVE
+24      41419617            18.5  ...         129.36  ACTIVE
+25      41419620            29.0  ...          52.63  ACTIVE
+26      41419621            15.5  ...          49.26  ACTIVE
+27      41419622            75.0  ...          27.20  ACTIVE
+28      41419623            13.0  ...          97.25  ACTIVE
+29      41419624            17.5  ...          38.56  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419623
+Chosen fav_price =  13.0
+liability_options [BEFORE] =  [50, 50, 1500, 50, 50, 50, 1500] , LENGTH = 7
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [50, 1500, 50, 50, 50, 1500] , LENGTH = 6
+{'price': '13.0', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419623', 'side': 'LAY', 'limitOrder': {'price': '13.0', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273480666139', 'marketId': '1.200859493', 'selectionId': 41419623, 'handicap': 0.0, 'priceSize': {'price': 13.0, 'size': 3.85}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T12:43:46.000Z', 'matchedDate': '2022-07-08T12:43:46.000Z', 'averagePriceMatched': 13.0, 'sizeMatched': 3.85, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577460  1.200859493  ...         3.85    3.85         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  155  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0       Kinsley (F/C) 8th Jul  31577456  ... 2022-07-08 10:06:00            1
+1    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            6
+2       Swindon (F/C) 8th Jul  31577460  ... 2022-07-08 10:13:00            1
+3     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+4  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            6
+5      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           14
+6       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           14
+7       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            6
+
+[8 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859823 2022-07-08 12:49:00            0.0   Crayford
+1    Forecast  1.200859415 2022-07-08 12:51:00            0.0    Kinsley
+2    Forecast  1.200860045 2022-07-08 12:57:00            0.0    Monmore
+3    Forecast  1.200859494 2022-07-08 12:59:00            0.0    Swindon
+4    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+Time Now:  2022-07-08 12:51:26
+Found the market to lay: Name = monmore id = 1.200860045
+Market Start Time: 2022-07-08 12:57:00+00:00
+Sleeping for 313 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/monmore-bags
+['TODAY', 'AUS / NZ / HK', 'REST OF WORLD', 'HORSE RACING', '6 MEETINGS', 'GOULBURN (NSW)', 'F', 'SALE (VIC)', 'F', 'TAMWORTH (NSW)', 'F', 'ROEBOURNE (WA)', 'F', 'ROCKHAMPTON (QLD)', 'F', 'TAREE (NSW)', 'F', 'GREYHOUND RACING', '13 MEETINGS', 'MANDURAH (WA)', 'F R8', '15m', 'RICHMOND (NSW)', 'F R12', '1m', 'BENDIGO (VIC)', 'F', 'GAWLER (SA)', 'F', 'GEELONG (VIC)', 'F', 'GOULBURN (NSW)', 'F', 'GRAFTON (NSW)', 'F', 'HEALESVILLE (VIC)', 'F', 'IPSWICH (QLD)', 'F', 'SALE (VIC)', 'F', 'THE GARDENS (NSW)', 'F', 'ADDINGTON (NZ)', 'F', 'MANAWATU (NZ)', 'F', 'HARNESS RACING', '8 MEETINGS', 'GLOUCESTER PARK (WA)', 'F R9', '3m', 'ALBION PARK (QLD)', 'F', 'BALLARAT (VIC)', 'F', 'DUBBO (NSW)', 'F', 'MILDURA (VIC)', 'F', 'NEWCASTLE (NSW)', 'F', 'WAGGA (NSW)', 'F', 'ADDINGTON (NZ)', 'F', 'FEATURED RACES', 'RAMORNIE HANDICAP 2022 (ALL IN) - GRAFTON', '5 DAYS', 'GRAFTON CUP 2022 (ALL IN) - GRAFTON', '6 DAYS', 'THE BLACKS A FAKE 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'QUEENSLAND DERBY 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'QUEENSLAND OAKS 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'SHOW ALL', 'Race Closed / Abandoned', 'Race Soon / Next', 'Meeting Has Fixed Odds', 'Market Mover', 'Quaddie Available']
+end of part1
+[]
+Neds api failed
+Next Neds URL to try =  https://www.neds.com.au/racing/monmore
+['MONMORE', 'GOOD', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '480m', '480Mtrs (A7)', '9s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'SPEEDMAP', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Monmore', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '32231', '1. Wave The Flag (1)', 'T: C Weatherall', '2.70', '1.55', '55436', '2. This Boy (2)', 'T: P A Curtin', '5.50', '2.40', '31655', '3. Skyfall Boyo (3)', 'T: P A Sallis', '9.50', '3.50', '25155', '4. Remarkable Hank (4)', 'T: A K Jenkins', '5.50', '2.40', '26456', '5. Crispy Bacon (5)', 'T: J E T Slater', '8.50', '3.20', '45212', '6. Vixons Beauty (6)', 'T: J B Thompson', '3.10', '1.70', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.90', 'VS', 'EVENS', '3 RUNNERS', '1.65', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'RICHMOND  R12', 'RACE SPONSORSHIPS AVAILABLE', '320M', 'Jumps in', '1m 9s', 'NEXT TO GO']
+True Venue Name = monmore
+odds_arr =  ['2.70', '5.50', '9.50', '5.50', '8.50', '3.10']
+sorted_odds =  ['2.70', '3.10', '5.50', '5.50', '8.50', '9.50']
+Forecast = 1-6
+lay_id index =  4
+Lay option found successfully =  4
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            13.0  ...         135.08  ACTIVE
+1       41419586            25.0  ...          46.90  ACTIVE
+2       41419587            20.0  ...          88.51  ACTIVE
+3       41419588            36.0  ...          39.56  ACTIVE
+4       41419589            10.5  ...         541.69  ACTIVE
+5       41419592            19.5  ...          86.76  ACTIVE
+6       41419593            70.0  ...           2.74  ACTIVE
+7       41419594            55.0  ...           9.76  ACTIVE
+8       41419595            75.0  ...          44.89  ACTIVE
+9       41419596            34.0  ...          32.76  ACTIVE
+10      41419599            46.0  ...          14.35  ACTIVE
+11      41419600            90.0  ...           0.00  ACTIVE
+12      41419601           100.0  ...           1.96  ACTIVE
+13      41419602           140.0  ...           5.69  ACTIVE
+14      41419603            65.0  ...          10.18  ACTIVE
+15      41419606            25.0  ...         153.41  ACTIVE
+16      41419607            55.0  ...           7.02  ACTIVE
+17      41419608            80.0  ...           0.00  ACTIVE
+18      41419609            90.0  ...           8.77  ACTIVE
+19      41419610            38.0  ...          30.16  ACTIVE
+20      41419613            46.0  ...           0.00  ACTIVE
+21      41419614           100.0  ...          10.52  ACTIVE
+22      41419615           150.0  ...           0.00  ACTIVE
+23      41419616           120.0  ...           4.67  ACTIVE
+24      41419617            70.0  ...          32.71  ACTIVE
+25      41419620             9.6  ...         683.86  ACTIVE
+26      41419621            21.0  ...          49.51  ACTIVE
+27      41419622            34.0  ...           7.33  ACTIVE
+28      41419623            24.0  ...          32.66  ACTIVE
+29      41419624            36.0  ...          53.60  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419589
+Chosen fav_price =  10.5
+liability_options [BEFORE] =  [50, 1500, 50, 50, 50, 1500] , LENGTH = 6
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [1500, 50, 50, 50, 1500] , LENGTH = 5
+{'price': '10.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419589', 'side': 'LAY', 'limitOrder': {'price': '10.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273481878300', 'marketId': '1.200860045', 'selectionId': 41419589, 'handicap': 0.0, 'priceSize': {'price': 10.5, 'size': 4.83}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T12:56:51.000Z', 'matchedDate': '2022-07-08T12:56:51.000Z', 'averagePriceMatched': 10.350931677018634, 'sizeMatched': 4.83, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577517  1.200860045  ...         4.83    4.83         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  176  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:03:53
+Found the market to lay: Name = newcastle id = 1.200859775
+Market Start Time: 2022-07-08 13:04:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/newcastle-bags
+['NEWCASTLE BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '480m', 'Friday', '2s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Newcastle Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Lightfoot Jamal (1)', 'T: J J Fenwick', '4.40', '2.15', '-', '2. Canny Bellatrix (2)', 'T: P Rutherford', '5.50', '2.50', '-', '3. Dodgy Pete (3)', 'T: T C Heilbron', '4.00', '2.00', '-', '4. Swift Howe (4)', 'T: R Hale', '4.40', '2.15', '-', '5. Calton Tommy (5)', 'T: E Y Bell', '6.00', '2.70', '-', '6. Cree Loch (6)', 'T: W Finley', '4.50', '2.20', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.75', 'VS', 'EVENS', '3 RUNNERS', '1.80', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'YORK UK  R1', 'WILLIAM HILL BEST ODDS GUARANTEED HANDICAP', '2385M', 'Jumps in', '1m 2s', 'NEXT TO GO']
+True Venue Name = newcastle-bags
+odds_arr =  ['4.40', '5.50', '4.00', '4.40', '6.00', '4.50']
+sorted_odds =  ['4.00', '4.40', '4.40', '4.50', '5.50', '6.00']
+Forecast = 3-1
+Two of the 3 smallest odds are the same : pos1 = 2,pos2 = 0,pos3 = 0
+ERROR!!! 2 same odds found
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:03:59
+Found the market to lay: Name = newcastle id = 1.200859775
+Market Start Time: 2022-07-08 13:04:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/newcastle-bags
+['NEWCASTLE BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '480m', 'Friday', '-4s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Newcastle Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Lightfoot Jamal (1)', 'T: J J Fenwick', '4.40', '2.15', '-', '2. Canny Bellatrix (2)', 'T: P Rutherford', '5.50', '2.50', '-', '3. Dodgy Pete (3)', 'T: T C Heilbron', '4.00', '2.00', '-', '4. Swift Howe (4)', 'T: R Hale', '4.40', '2.15', '-', '5. Calton Tommy (5)', 'T: E Y Bell', '6.00', '2.70', '-', '6. Cree Loch (6)', 'T: W Finley', '4.50', '2.20', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.75', 'VS', 'EVENS', '3 RUNNERS', '1.80', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'YORK UK  R1', 'WILLIAM HILL BEST ODDS GUARANTEED HANDICAP', '2385M', 'Jumps in', '56s', 'NEXT TO GO']
+True Venue Name = newcastle-bags
+odds_arr =  ['4.40', '5.50', '4.00', '4.40', '6.00', '4.50']
+sorted_odds =  ['4.00', '4.40', '4.40', '4.50', '5.50', '6.00']
+Forecast = 3-1
+Two of the 3 smallest odds are the same : pos1 = 2,pos2 = 0,pos3 = 0
+ERROR!!! 2 same odds found
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:04:04
+Found the market to lay: Name = crayford id = 1.200859824
+Market Start Time: 2022-07-08 13:07:00+00:00
+Sleeping for 155 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/crayford-bags
+['CRAYFORD BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '380m', '380Mtrs (A10)', '20h', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'WIN / PLACE', 'LIVE VIDEO', 'Crayford Bags', 'RUNNERS']
+end of part1
+['RUNNERS', 'SP', '-', '1. Reg Boy (1)', 'T: J J Luckhurst', 'SP', '-', '2. Moaning Osaka (2)', 'T: D B Whitton', 'SP', '-', '3. Ritzy Razl (3)', 'T: J W Reynolds', 'SP', '-', '4. Moaning Madonna (4)', 'T: D B Whitton', 'SP', '-', '5. Ellies Teddybear (5)', 'T: J Turner', 'SP', '-', '6. Glassmoss Bud (6)', 'T: G L Davidson', 'SP', 'Event Rules: Only two place dividends paid.', 'MANDURAH  R8', 'ZACK MONELLI AT STUD', '490M', 'Jumps in', '5m', 'NEXT TO GO']
+True Venue Name = crayford-bags
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+Length of odds_arr = 6
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+ERROR!!! less than 6 runners
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:06:44
+Found the market to lay: Name = crayford id = 1.200859824
+Market Start Time: 2022-07-08 13:07:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/crayford-bags
+['CRAYFORD BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '380m', '380Mtrs (A10)', '20h', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'WIN / PLACE', 'LIVE VIDEO', 'Crayford Bags', 'RUNNERS']
+end of part1
+['RUNNERS', 'SP', '-', '1. Reg Boy (1)', 'T: J J Luckhurst', 'SP', '-', '2. Moaning Osaka (2)', 'T: D B Whitton', 'SP', '-', '3. Ritzy Razl (3)', 'T: J W Reynolds', 'SP', '-', '4. Moaning Madonna (4)', 'T: D B Whitton', 'SP', '-', '5. Ellies Teddybear (5)', 'T: J Turner', 'SP', '-', '6. Glassmoss Bud (6)', 'T: G L Davidson', 'SP', 'Event Rules: Only two place dividends paid.', 'MANDURAH  R8', 'ZACK MONELLI AT STUD', '490M', 'Jumps in', '5m', 'NEXT TO GO']
+True Venue Name = crayford-bags
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+Length of odds_arr = 6
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+ERROR!!! less than 6 runners
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:06:50
+Found the market to lay: Name = crayford id = 1.200859824
+Market Start Time: 2022-07-08 13:07:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/crayford-bags
+['CRAYFORD BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '380m', '380Mtrs (A10)', '20h', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'WIN / PLACE', 'LIVE VIDEO', 'Crayford Bags', 'RUNNERS']
+end of part1
+['RUNNERS', 'SP', '-', '1. Reg Boy (1)', 'T: J J Luckhurst', 'SP', '-', '2. Moaning Osaka (2)', 'T: D B Whitton', 'SP', '-', '3. Ritzy Razl (3)', 'T: J W Reynolds', 'SP', '-', '4. Moaning Madonna (4)', 'T: D B Whitton', 'SP', '-', '5. Ellies Teddybear (5)', 'T: J Turner', 'SP', '-', '6. Glassmoss Bud (6)', 'T: G L Davidson', 'SP', 'Event Rules: Only two place dividends paid.', 'MANDURAH  R8', 'ZACK MONELLI AT STUD', '490M', 'Jumps in', '5m', 'NEXT TO GO']
+True Venue Name = crayford-bags
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+Length of odds_arr = 6
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+ERROR!!! less than 6 runners
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:06:55
+Found the market to lay: Name = crayford id = 1.200859824
+Market Start Time: 2022-07-08 13:07:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/crayford-bags
+['CRAYFORD BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '380m', '380Mtrs (A10)', '20h', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'WIN / PLACE', 'LIVE VIDEO', 'Crayford Bags', 'RUNNERS']
+end of part1
+['RUNNERS', 'SP', '-', '1. Reg Boy (1)', 'T: J J Luckhurst', 'SP', '-', '2. Moaning Osaka (2)', 'T: D B Whitton', 'SP', '-', '3. Ritzy Razl (3)', 'T: J W Reynolds', 'SP', '-', '4. Moaning Madonna (4)', 'T: D B Whitton', 'SP', '-', '5. Ellies Teddybear (5)', 'T: J Turner', 'SP', '-', '6. Glassmoss Bud (6)', 'T: G L Davidson', 'SP', 'Event Rules: Only two place dividends paid.', 'MANDURAH  R8', 'ZACK MONELLI AT STUD', '490M', 'Jumps in', '5m', 'NEXT TO GO']
+True Venue Name = crayford-bags
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+Length of odds_arr = 6
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+ERROR!!! less than 6 runners
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            7
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           12
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           13
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           13
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            7
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859775 2022-07-08 13:04:00            0.0  Newcastle
+1    Forecast  1.200859824 2022-07-08 13:07:00            0.0   Crayford
+2    Forecast  1.200860046 2022-07-08 13:12:00            0.0    Monmore
+3    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+4    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+Time Now:  2022-07-08 13:07:00
+Found the market to lay: Name = monmore id = 1.200860046
+Market Start Time: 2022-07-08 13:12:00+00:00
+Sleeping for 279 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/monmore-bags
+['TODAY', 'AUS / NZ / HK', 'REST OF WORLD', 'HORSE RACING', '6 MEETINGS', 'GOULBURN (NSW)', 'F', 'SALE (VIC)', 'F', 'TAMWORTH (NSW)', 'F', 'ROEBOURNE (WA)', 'F', 'ROCKHAMPTON (QLD)', 'F', 'TAREE (NSW)', 'F', 'GREYHOUND RACING', '13 MEETINGS', 'MANDURAH (WA)', 'F R8', '16s', 'BENDIGO (VIC)', 'F', 'GAWLER (SA)', 'F', 'GEELONG (VIC)', 'F', 'GOULBURN (NSW)', 'F', 'GRAFTON (NSW)', 'F', 'HEALESVILLE (VIC)', 'F', 'IPSWICH (QLD)', 'F', 'RICHMOND (NSW)', 'F', 'SALE (VIC)', 'F', 'THE GARDENS (NSW)', 'F', 'ADDINGTON (NZ)', 'F', 'MANAWATU (NZ)', 'F', 'HARNESS RACING', '8 MEETINGS', 'GLOUCESTER PARK (WA)', 'F R10', '18m', 'ALBION PARK (QLD)', 'F', 'BALLARAT (VIC)', 'F', 'DUBBO (NSW)', 'F', 'MILDURA (VIC)', 'F', 'NEWCASTLE (NSW)', 'F', 'WAGGA (NSW)', 'F', 'ADDINGTON (NZ)', 'F', 'FEATURED RACES', 'RAMORNIE HANDICAP 2022 (ALL IN) - GRAFTON', '5 DAYS', 'GRAFTON CUP 2022 (ALL IN) - GRAFTON', '6 DAYS', 'THE BLACKS A FAKE 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'QUEENSLAND DERBY 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'QUEENSLAND OAKS 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'SHOW ALL', 'Race Closed / Abandoned', 'Race Soon / Next', 'Meeting Has Fixed Odds', 'Market Mover', 'Quaddie Available']
+end of part1
+[]
+Neds api failed
+Next Neds URL to try =  https://www.neds.com.au/racing/monmore
+['MONMORE', 'GOOD', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '480m', '480Mtrs (A10)', '9s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'SPEEDMAP', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Monmore', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '63534', '1. Lets Hear It (1)', 'T: P A Curtin', '5.50', '2.40', 'x5166', '2. Winterfield Lady (2)', 'T: C Jones', '14.00', '4.60', '33432', '3. Oggys Girl (3)', 'T: P C White', '6.00', '2.60', '36545', '4. Conna Legend (4)', 'T: J E T Slater', '8.00', '3.10', '25343', '5. Winterfield Cain (5)', 'T: C Jones', '2.30', '1.45', '34332', '6. Ballinakill May (6)', 'T: A K Jenkins', '3.00', '1.65', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.45', 'VS', 'EVENS', '3 RUNNERS', '2.25', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'FEURS  R4', 'PRIX EIFFAGE ROUTE CENTRE-EST', '2850M', 'Jumps in', '-4m 52s', 'NEXT TO GO']
+True Venue Name = monmore
+odds_arr =  ['5.50', '14.00', '6.00', '8.00', '2.30', '3.00']
+sorted_odds =  ['2.30', '3.00', '5.50', '6.00', '8.00', '14.00']
+Forecast = 5-6
+lay_id index =  24
+Lay option found successfully =  24
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585           110.0  ...          23.84  ACTIVE
+1       41419586            42.0  ...          42.47  ACTIVE
+2       41419587            75.0  ...          10.52  ACTIVE
+3       41419588            18.0  ...          73.37  ACTIVE
+4       41419589            27.0  ...         218.94  ACTIVE
+5       41419592           240.0  ...           0.00  ACTIVE
+6       41419593           360.0  ...           3.52  ACTIVE
+7       41419594           410.0  ...           0.00  ACTIVE
+8       41419595           140.0  ...           6.64  ACTIVE
+9       41419596           230.0  ...           3.52  ACTIVE
+10      41419599            70.0  ...          33.29  ACTIVE
+11      41419600           240.0  ...           0.00  ACTIVE
+12      41419601           130.0  ...          10.94  ACTIVE
+13      41419602            38.0  ...           0.00  ACTIVE
+14      41419603            60.0  ...          40.27  ACTIVE
+15      41419606            95.0  ...           3.51  ACTIVE
+16      41419607           380.0  ...           0.00  ACTIVE
+17      41419608           120.0  ...           7.04  ACTIVE
+18      41419609            48.0  ...           7.00  ACTIVE
+19      41419610            80.0  ...           3.51  ACTIVE
+20      41419613            11.0  ...         136.85  ACTIVE
+21      41419614            50.0  ...           7.03  ACTIVE
+22      41419615            14.5  ...         173.71  ACTIVE
+23      41419616            21.0  ...          34.69  ACTIVE
+24      41419617             6.4  ...         432.24  ACTIVE
+25      41419620            18.5  ...         111.66  ACTIVE
+26      41419621           110.0  ...           0.03  ACTIVE
+27      41419622            28.0  ...          74.37  ACTIVE
+28      41419623            44.0  ...           7.00  ACTIVE
+29      41419624             9.4  ...         371.41  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419617
+Chosen fav_price =  6.4
+liability_options [BEFORE] =  [1500, 50, 50, 50, 1500] , LENGTH = 5
+Chosen Liability amount = $ 1500
+liability_options [AFTER] =  [50, 50, 50, 1500] , LENGTH = 4
+{'price': '6.4', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '1500'}
+{'orderType': 'LIMIT', 'selectionId': '41419617', 'side': 'LAY', 'limitOrder': {'price': '6.4', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '1500'}}
+{'betId': '273483140762', 'marketId': '1.200860046', 'selectionId': 41419617, 'handicap': 0.0, 'priceSize': {'price': 6.4, 'size': 234.38}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTABLE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T13:11:52.000Z', 'matchedDate': '2022-07-08T13:11:52.000Z', 'averagePriceMatched': 6.4, 'sizeMatched': 24.1, 'sizeRemaining': 210.28, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  210.28
+Order is not fully matched yet
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585           110.0  ...          23.84  ACTIVE
+1       41419586            42.0  ...          42.47  ACTIVE
+2       41419587            75.0  ...          10.52  ACTIVE
+3       41419588            17.0  ...         101.54  ACTIVE
+4       41419589            27.0  ...         218.94  ACTIVE
+5       41419592           230.0  ...           0.00  ACTIVE
+6       41419593           340.0  ...           3.52  ACTIVE
+7       41419594           400.0  ...           0.00  ACTIVE
+8       41419595           140.0  ...           6.64  ACTIVE
+9       41419596           230.0  ...           3.52  ACTIVE
+10      41419599            70.0  ...          33.29  ACTIVE
+11      41419600           240.0  ...           0.00  ACTIVE
+12      41419601           130.0  ...          10.94  ACTIVE
+13      41419602            38.0  ...           0.00  ACTIVE
+14      41419603            60.0  ...          40.27  ACTIVE
+15      41419606            95.0  ...           3.51  ACTIVE
+16      41419607           380.0  ...           0.00  ACTIVE
+17      41419608           130.0  ...           7.04  ACTIVE
+18      41419609            48.0  ...           7.00  ACTIVE
+19      41419610            80.0  ...           3.51  ACTIVE
+20      41419613            11.0  ...         136.85  ACTIVE
+21      41419614            50.0  ...           7.03  ACTIVE
+22      41419615            14.5  ...         173.71  ACTIVE
+23      41419616            21.0  ...          34.69  ACTIVE
+24      41419617             6.8  ...         480.44  ACTIVE
+25      41419620            18.5  ...         111.66  ACTIVE
+26      41419621           110.0  ...           0.03  ACTIVE
+27      41419622            28.0  ...          74.37  ACTIVE
+28      41419623            44.0  ...           7.00  ACTIVE
+29      41419624             9.4  ...         371.41  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419617
+Chosen fav_price =  6.8
+replace intructions filter:  {'betId': '273483140762', 'newPrice': 6.8}
+Replaced order report:  ReplaceOrders
+{'betId': '273483140762', 'marketId': '1.200860046', 'selectionId': 41419617, 'handicap': 0.0, 'priceSize': {'price': 6.4, 'size': 234.38}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T13:11:52.000Z', 'matchedDate': '2022-07-08T13:11:52.000Z', 'averagePriceMatched': 6.4, 'sizeMatched': 24.1, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 210.28, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577517  1.200860046  ...        24.10 -130.14         Naing_maker
+1        4339  31577517  1.200860046  ...        72.86 -422.59         Naing_maker
+
+[2 rows x 20 columns]
+Sleeping for some time before starting the next game =  64  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            8
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           11
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            7
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           12
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           12
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            8
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859776 2022-07-08 13:19:00            0.0  Newcastle
+1    Forecast  1.200859825 2022-07-08 13:23:00            0.0   Crayford
+2    Forecast  1.200860047 2022-07-08 13:32:00            0.0    Monmore
+3    Forecast  1.200859777 2022-07-08 13:36:00            0.0  Newcastle
+4    Forecast  1.200859826 2022-07-08 13:42:00            0.0   Crayford
+Time Now:  2022-07-08 13:17:06
+Found the market to lay: Name = newcastle id = 1.200859776
+Market Start Time: 2022-07-08 13:19:00+00:00
+Sleeping for 93 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/newcastle-bags
+['NEWCASTLE BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '480m', 'Newcastle Greyhound Stadium Stakes', '15s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Newcastle Bags', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '-', '1. Pennys Hawkwing (1)', 'T: S G Tighe', '7.50', '3.00', '-', '2. Gartcloss Jet (2)', 'T: P Kennedy', '5.00', '2.25', '-', '3. Sporting Setanta (3)', 'T: A Harrison', '3.00', '1.65', '-', '4. Gartcloss Geordi (4)', 'T: P Kennedy', '2.70', '1.55', '-', '5. Fourbet Layla (5)', 'T: T C Heilbron', '11.00', '3.90', '-', '6. Swift Abide (6)', 'T: R Hale', '6.00', '2.60', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '2.10', 'VS', 'EVENS', '3 RUNNERS', '1.50', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'FAIRVIEW  R7', 'WALMER HANDICAP (FILLIES AND MARES - NON-BLACK TYPE)', '1800M', 'Jumps in', '1m 15s', 'NEXT TO GO']
+True Venue Name = newcastle-bags
+odds_arr =  ['7.50', '5.00', '3.00', '2.70', '11.00', '6.00']
+sorted_odds =  ['2.70', '3.00', '5.00', '6.00', '7.50', '11.00']
+Forecast = 4-3
+lay_id index =  17
+Lay option found successfully =  17
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            46.0  ...          45.05  ACTIVE
+1       41419586            60.0  ...          41.13  ACTIVE
+2       41419587            46.0  ...          37.60  ACTIVE
+3       41419588           230.0  ...           1.19  ACTIVE
+4       41419589           110.0  ...          32.52  ACTIVE
+5       41419592            42.0  ...          91.93  ACTIVE
+6       41419593            24.0  ...          43.80  ACTIVE
+7       41419594            19.5  ...          42.20  ACTIVE
+8       41419595           110.0  ...           3.52  ACTIVE
+9       41419596            44.0  ...          14.42  ACTIVE
+10      41419599            28.0  ...         137.46  ACTIVE
+11      41419600            15.0  ...          39.78  ACTIVE
+12      41419601            10.5  ...          66.25  ACTIVE
+13      41419602            75.0  ...           0.35  ACTIVE
+14      41419603            25.0  ...          21.93  ACTIVE
+15      41419606            21.0  ...         177.87  ACTIVE
+16      41419607            12.0  ...          34.16  ACTIVE
+17      41419608            11.5  ...          83.85  ACTIVE
+18      41419609            44.0  ...          26.70  ACTIVE
+19      41419610            16.5  ...          64.26  ACTIVE
+20      41419613           280.0  ...          21.12  ACTIVE
+21      41419614           160.0  ...           0.00  ACTIVE
+22      41419615           180.0  ...           0.00  ACTIVE
+23      41419616           120.0  ...          10.98  ACTIVE
+24      41419617           260.0  ...           8.13  ACTIVE
+25      41419620            90.0  ...          59.15  ACTIVE
+26      41419621            55.0  ...          14.04  ACTIVE
+27      41419622            60.0  ...           7.00  ACTIVE
+28      41419623            34.0  ...          21.04  ACTIVE
+29      41419624           150.0  ...           0.87  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419608
+Chosen fav_price =  11.5
+liability_options [BEFORE] =  [50, 50, 50, 1500] , LENGTH = 4
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [50, 50, 1500] , LENGTH = 3
+{'price': '11.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419608', 'side': 'LAY', 'limitOrder': {'price': '11.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273483705823', 'marketId': '1.200859776', 'selectionId': 41419608, 'handicap': 0.0, 'priceSize': {'price': 11.5, 'size': 4.44}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T13:18:46.000Z', 'matchedDate': '2022-07-08T13:18:46.000Z', 'averagePriceMatched': 11.260135135135135, 'sizeMatched': 4.44, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577495  1.200859776  ...         4.44    4.44         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  160  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            8
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           10
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            8
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           12
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           12
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            8
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859825 2022-07-08 13:23:00    2435.266944   Crayford
+1    Forecast  1.200860047 2022-07-08 13:32:00       0.000000    Monmore
+2    Forecast  1.200859777 2022-07-08 13:36:00       0.000000  Newcastle
+3    Forecast  1.200859826 2022-07-08 13:42:00       0.000000   Crayford
+4    Forecast  1.200860048 2022-07-08 13:52:00       0.000000    Monmore
+Time Now:  2022-07-08 13:26:30
+Found the market to lay: Name = monmore id = 1.200860047
+Market Start Time: 2022-07-08 13:32:00+00:00
+Sleeping for 309 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/monmore-bags
+['TODAY', 'AUS / NZ / HK', 'REST OF WORLD', 'HORSE RACING', '6 MEETINGS', 'GOULBURN (NSW)', 'F', 'SALE (VIC)', 'F', 'TAMWORTH (NSW)', 'F', 'ROEBOURNE (WA)', 'F', 'ROCKHAMPTON (QLD)', 'F', 'TAREE (NSW)', 'F', 'GREYHOUND RACING', '13 MEETINGS', 'BENDIGO (VIC)', 'F', 'GAWLER (SA)', 'F', 'GEELONG (VIC)', 'F', 'GOULBURN (NSW)', 'F', 'GRAFTON (NSW)', 'F', 'HEALESVILLE (VIC)', 'F', 'IPSWICH (QLD)', 'F', 'MANDURAH (WA)', 'F', 'RICHMOND (NSW)', 'F', 'SALE (VIC)', 'F', 'THE GARDENS (NSW)', 'F', 'ADDINGTON (NZ)', 'F', 'MANAWATU (NZ)', 'F', 'HARNESS RACING', '8 MEETINGS', 'GLOUCESTER PARK (WA)', 'F R10', '-105s', 'ALBION PARK (QLD)', 'F', 'BALLARAT (VIC)', 'F', 'DUBBO (NSW)', 'F', 'MILDURA (VIC)', 'F', 'NEWCASTLE (NSW)', 'F', 'WAGGA (NSW)', 'F', 'ADDINGTON (NZ)', 'F', 'FEATURED RACES', 'RAMORNIE HANDICAP 2022 (ALL IN) - GRAFTON', '5 DAYS', 'GRAFTON CUP 2022 (ALL IN) - GRAFTON', '6 DAYS', 'THE BLACKS A FAKE 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'QUEENSLAND DERBY 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'QUEENSLAND OAKS 2022 (ALL IN) - ALBION PARK', '15 DAYS', 'SHOW ALL', 'Race Closed / Abandoned', 'Race Soon / Next', 'Meeting Has Fixed Odds', 'Market Mover', 'Quaddie Available']
+end of part1
+[]
+Neds api failed
+Next Neds URL to try =  https://www.neds.com.au/racing/monmore
+['MONMORE', 'GOOD', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '480m', '480Mtrs (A7)', '7s', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'FLUCTUATIONS', 'SPEEDMAP', 'WIN / PLACE SAME RACE MULTI BLENDED MBO', 'LIVE VIDEO', 'Monmore', 'FIXEDSTARTING PRICE', 'RUNNERS']
+end of part1
+['RUNNERS', 'WIN', 'PLC', '21242', '1. Weston Kimberley (1)', 'T: P C White', '2.90', '1.65', '16423', '2. Lady Pixie (2)', 'T: J E T Slater', '3.30', '1.80', '12124', '3. Besloe Frisco (3)', 'T: A J Dunn', '7.50', '3.10', 'x6446', '4. Ballycian Bubba (4)', 'T: C D Marston', '8.50', '3.40', '56332', '5. China Guy (5)', 'T: V A Lea', '4.40', '2.15', '55544', '6. Skyfall Marianne (6)', 'T: P A Sallis', '5.50', '2.45', 'Event Rules: Only two place dividends paid.', 'ODDS VS EVENS', 'ODDS', '3 RUNNERS', '1.60', 'VS', 'EVENS', '3 RUNNERS', '1.95', 'i', 'Play the Odd numbered runners against the Even numbered runners!', 'DIEPPE  R4', 'PRIX VAZIRABAD', '3000M', 'Jumps in', '-2m 53s', 'NEXT TO GO']
+True Venue Name = monmore
+odds_arr =  ['2.90', '3.30', '7.50', '8.50', '4.40', '5.50']
+sorted_odds =  ['2.90', '3.30', '4.40', '5.50', '7.50', '8.50']
+Forecast = 1-2
+lay_id index =  0
+Lay option found successfully =  0
+    Selection ID  Best Lay Price  ...  Total Matched  Status
+0       41419585            10.5  ...         594.30  ACTIVE
+1       41419586            27.0  ...          17.07  ACTIVE
+2       41419587            36.0  ...          21.32  ACTIVE
+3       41419588            23.0  ...          48.75  ACTIVE
+4       41419589            22.0  ...          28.12  ACTIVE
+5       41419592            10.0  ...         598.71  ACTIVE
+6       41419593            28.0  ...          24.96  ACTIVE
+7       41419594            36.0  ...          19.95  ACTIVE
+8       41419595            23.0  ...          51.44  ACTIVE
+9       41419596            24.0  ...          21.08  ACTIVE
+10      41419599            46.0  ...          13.54  ACTIVE
+11      41419600            50.0  ...           2.98  ACTIVE
+12      41419601           110.0  ...          16.57  ACTIVE
+13      41419602            80.0  ...           3.51  ACTIVE
+14      41419603            75.0  ...          10.56  ACTIVE
+15      41419606            48.0  ...           9.50  ACTIVE
+16      41419607            50.0  ...          18.19  ACTIVE
+17      41419608           100.0  ...          17.20  ACTIVE
+18      41419609            75.0  ...           4.11  ACTIVE
+19      41419610            75.0  ...          12.53  ACTIVE
+20      41419613            25.0  ...          64.86  ACTIVE
+21      41419614            30.0  ...          48.35  ACTIVE
+22      41419615            60.0  ...           3.52  ACTIVE
+23      41419616            60.0  ...           4.11  ACTIVE
+24      41419617            34.0  ...          24.63  ACTIVE
+25      41419620            30.0  ...          28.47  ACTIVE
+26      41419621            36.0  ...          26.75  ACTIVE
+27      41419622            70.0  ...          14.07  ACTIVE
+28      41419623            75.0  ...           7.04  ACTIVE
+29      41419624            42.0  ...          24.63  ACTIVE
+
+[30 rows x 6 columns]
+[41419585, 41419586, 41419587, 41419588, 41419589, 41419592, 41419593, 41419594, 41419595, 41419596, 41419599, 41419600, 41419601, 41419602, 41419603, 41419606, 41419607, 41419608, 41419609, 41419610, 41419613, 41419614, 41419615, 41419616, 41419617, 41419620, 41419621, 41419622, 41419623, 41419624]
+lay_selection_id = 41419585
+Chosen fav_price =  10.5
+liability_options [BEFORE] =  [50, 50, 1500] , LENGTH = 3
+Chosen Liability amount = $ 50
+liability_options [AFTER] =  [50, 1500] , LENGTH = 2
+{'price': '10.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}
+{'orderType': 'LIMIT', 'selectionId': '41419585', 'side': 'LAY', 'limitOrder': {'price': '10.5', 'persistenceType': 'LAPSE', 'betTargetType': 'PAYOUT', 'betTargetSize': '50'}}
+{'betId': '273484591889', 'marketId': '1.200860047', 'selectionId': 41419585, 'handicap': 0.0, 'priceSize': {'price': 10.5, 'size': 4.76}, 'bspLiability': 0.0, 'side': 'LAY', 'status': 'EXECUTION_COMPLETE', 'persistenceType': 'LAPSE', 'orderType': 'LIMIT', 'placedDate': '2022-07-08T13:31:53.000Z', 'matchedDate': '2022-07-08T13:31:54.000Z', 'averagePriceMatched': 10.5, 'sizeMatched': 4.76, 'sizeRemaining': 0.0, 'sizeLapsed': 0.0, 'sizeCancelled': 0.0, 'sizeVoided': 0.0, 'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY', 'customerStrategyRef': 'Naing_maker'}
+unmatched size =  0.0
+Full order matched
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+Sleep 60 seconds before checking again if market is settled
+  eventTypeId   eventId     marketId  ...  sizeSettled  profit customerStrategyRef
+0        4339  31577517  1.200860047  ...         4.76    4.76         Naing_maker
+
+[1 rows x 20 columns]
+Sleeping for some time before starting the next game =  150  seconds
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            9
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00           10
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            8
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           11
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           11
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            9
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859777 2022-07-08 13:36:00           0.00  Newcastle
+1    Forecast  1.200859826 2022-07-08 13:42:00           0.00   Crayford
+2    Forecast  1.200860048 2022-07-08 13:52:00           0.00    Monmore
+3    Forecast  1.200859778 2022-07-08 13:54:00         176.04  Newcastle
+4    Forecast  1.200859827 2022-07-08 14:02:00           0.00   Crayford
+Time Now:  2022-07-08 13:38:28
+Found the market to lay: Name = crayford id = 1.200859826
+Market Start Time: 2022-07-08 13:42:00+00:00
+Sleeping for 191 seconds
+Sleeping done
+Next Neds URL to try =  https://www.neds.com.au/racing/crayford-bags
+['CRAYFORD BAGS', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '380m', '380Mtrs (A10)', '19h', 'RACE FIELD', 'COMMENTS', '$ TRACKER', 'WIN / PLACE', 'LIVE VIDEO', 'Crayford Bags', 'RUNNERS']
+end of part1
+['RUNNERS', 'SP', '-', '1. Reg Boy (1)', 'T: J J Luckhurst', 'SP', '-', '2. Moaning Osaka (2)', 'T: D B Whitton', 'SP', '-', '3. Ritzy Razl (3)', 'T: J W Reynolds', 'SP', '-', '4. Moaning Madonna (4)', 'T: D B Whitton', 'SP', '-', '5. Ellies Teddybear (5)', 'T: J Turner', 'SP', '-', '6. Glassmoss Bud (6)', 'T: G L Davidson', 'SP', 'Event Rules: Only two place dividends paid.', 'GLOUCESTER PARK  R11', 'THE TROTS WA - LUCY WEBB 2YO FILLIES MS PACE (SKY1)', '1730M', 'Jumps in', '23m', 'NEXT TO GO']
+True Venue Name = crayford-bags
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+Length of odds_arr = 6
+odds_arr =  ['SP', 'SP', 'SP', 'SP', 'SP', 'SP']
+ERROR!!! less than 6 runners
+Error:  N/A
+Moving to next match
+********************************************************
+
+
+                   Event Name  Event ID  ...           Open Date Market Count
+0    Nottingham (F/C) 8th Jul  31577522  ... 2022-07-08 17:19:00            9
+1     Newcastle (F/C) 8th Jul  31577495  ... 2022-07-08 13:04:00            9
+2  Central Park (F/C) 8th Jul  31577530  ... 2022-07-08 17:17:00            8
+3      Crayford (F/C) 8th Jul  31577501  ... 2022-07-08 12:49:00           11
+4       Monmore (F/C) 8th Jul  31577517  ... 2022-07-08 12:57:00           11
+5       Romford (F/C) 8th Jul  31577535  ... 2022-07-08 17:09:00            9
+
+[6 rows x 7 columns]
+  Market Name    Market ID   Market Start Time  Total Matched      Venue
+0    Forecast  1.200859826 2022-07-08 13:42:00           0.00   Crayford
+1    Forecast  1.200860048 2022-07-08 13:52:00           0.00    Monmore
+2    Forecast  1.200859778 2022-07-08 13:54:00         176.04  Newcastle
+3    Forecast  1.200859827 2022-07-08 14:02:00           0.00   Crayford
+4    Forecast  1.200859779 2022-07-08 14:09:00           0.00  Newcastle
+Time Now:  2022-07-08 13:41:45
+Found the market to lay: Name = crayford id = 1.200859826
+Market Start Time: 2022-07-08 13:42:00+00:00
+Don't need to sleep
+Next Neds URL to try =  https://www.neds.com.au/racing/crayford-bags
