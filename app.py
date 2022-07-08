@@ -15,6 +15,7 @@ from IPython.display import display
 # Project libraries
 import utils
 import constants
+import logging
 
 # %%
 def filter_gh_races(gh_racing_id):
@@ -87,14 +88,13 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
     for obj in market_book.runners:
         lay_options_ids.append(obj.selection_id)
         
-    if debug:
-        print(lay_options_ids)
+    logging.info("lay_options_ids = %s", lay_options_ids)
     
     lay_selection_id = lay_options_ids[lay_selection_index]
-    print("lay_selection_id = " + str(lay_selection_id))
-    picked_row_df = runners_df.loc[runners_df['Selection ID'] == lay_selection_id]
-    [fav_price] = picked_row_df['Best Lay Price'].values
-    print("Chosen fav_price = ", fav_price)
+    logging.info("lay_selection_id = %d", lay_selection_id)
+    chosen_row_df = runners_df.loc[runners_df['Selection ID'] == lay_selection_id]
+    [fav_price] = chosen_row_df['Best Lay Price'].values
+    logging.info("Chosen fav_price = %s", fav_price)
 
     return lay_selection_id, fav_price
 
@@ -102,17 +102,32 @@ def clearOutputFile(fname):
     ## Clear the contents of the output file
     with open(fname, 'r+') as f:
         f.truncate()
-        print("Cleared contents from the output file -> ", fname)
+        logging.info("Cleared contents from the output file -> %s", fname)
           
     return
 
 def failGracefully(error='N/A'):
-    print("Error: ", error)
-    print("Moving to next match")
-    print("********************************************************", end='\n\n\n')
+    logging.critical("Error: ", error, exc_info=True)
+    logging.error("Moving to next match")
+    logging.error("********************************************************\n\n\n")
 
 
 if __name__ == "__main__":
+    #######################################
+    # Init logging
+    #######################################
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(message)s",
+        handlers=[
+            logging.FileHandler("debug.log"), # log to file
+            logging.StreamHandler() # log to stdout
+            ]
+    )
+
+    #######################################
+    # Non-interactive login to betfair API
+    #######################################
     # Change this certs path to wherever you're storing your certificates
     certs_path = str(os.getcwd()) + "/certs/"
     # Change these login details to your own
@@ -128,6 +143,9 @@ if __name__ == "__main__":
 
     trading.login()
 
+    #######################################
+    # Start the program
+    #######################################
     ## TODO
     debug = True # Print the data frames
     completion_cnt = 0
@@ -177,11 +195,11 @@ if __name__ == "__main__":
 
         if(time_gap > datetime.timedelta(seconds=constants.PREBET_DELAY)):
             time_to_sleep = (time_gap - datetime.timedelta(seconds=constants.PREBET_DELAY)).seconds
-            print("Sleeping for " + str(time_to_sleep) + " seconds")
+            logging.info("Sleeping for " + str(time_to_sleep) + " seconds")
             time.sleep(time_to_sleep) #TODO
-            print("Sleeping done")
+            logging.info("Sleeping done")
         else:
-            print("Don't need to sleep")
+            logging.info("Don't need to sleep")
 
         #######################################
         # Get odds from NEDS
@@ -189,21 +207,21 @@ if __name__ == "__main__":
         lay_selection_index = utils.choose_lay_option_neds(myRaceVenue)
 
         if(lay_selection_index == -1):
-            print("ERROR!!! 2 same odds found")
+            logging.error("ERROR!!! 2 same odds found")
             failGracefully()
             continue
             
         elif(lay_selection_index == -2):
-            print("ERROR!!! less than 6 runners")
+            logging.error("ERROR!!! less than 6 runners")
             failGracefully()
             continue
 
         elif(lay_selection_index == -3):
-            print("ERROR!!! NEDS API failed")
+            logging.error("ERROR!!! NEDS API failed")
             failGracefully()
             continue
         else:
-            print("Lay option found successfully = ", lay_selection_index)
+            logging.info("Lay option found successfully = " + str(lay_selection_index))
 
         # %%
         #######################################
@@ -216,7 +234,7 @@ if __name__ == "__main__":
         try:
             lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
         except Exception as e:
-            print("Error occurred in choose_lay_option_bf()")
+            logging.error("Error occurred in choose_lay_option_bf()")
             failGracefully(e)
             continue
 
@@ -227,14 +245,14 @@ if __name__ == "__main__":
         #######################################
         if(len(liability_options) == 0):
             # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
-            liability_options = [50, 50, 50, 50, 50, 1500, 50, 50, 50, 1500] #not sure why this can't be moved into constants.py
-        print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
+            liability_options = [50, 50, 50, 50, 50, 980, 50, 50, 50, 985] #not sure why this can't be moved into constants.py
+        logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
 
         [liability_amount] = np.random.choice(liability_options, size=1)
-        print("Chosen Liability amount = $", liability_amount)
+        logging.info("Chosen Liability amount = $%d", liability_amount)
 
         liability_options.remove(liability_amount)
-        print("liability_options [AFTER] = ", liability_options, ", LENGTH =", len(liability_options))
+        logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
 
         # %%
         #######################################
@@ -246,7 +264,7 @@ if __name__ == "__main__":
             bet_target_type='PAYOUT',
             bet_target_size=str(liability_amount) 
         )
-        print(order_filter)
+        logging.info("order_filter = %s", order_filter)
 
         #######################################
         # Create a place instruction filter
@@ -257,7 +275,7 @@ if __name__ == "__main__":
             order_type = "LIMIT", # fixed price order
             limit_order=order_filter
         )
-        print(instructions_filter)
+        logging.info("instructions_filter = %s", instructions_filter)
 
 
         # %%
@@ -282,14 +300,14 @@ if __name__ == "__main__":
                 current_orders = trading.betting.list_current_orders(
                     market_ids=[myRaceID])
                 single_current_order = current_orders._data['currentOrders'][0]
-                print(single_current_order)
+                logging.info("single_current_order = %s", single_current_order)
 
                 unmatched_size = single_current_order['sizeRemaining']
-                print('unmatched size = ', unmatched_size)
+                logging.info('unmatched size = %s', unmatched_size)
 
                 ## if there's unmatched order, replace it with new price, else set the fullyMatched flag
                 if float(unmatched_size) != 0:
-                    print("Order is not fully matched yet")
+                    logging.info("Order is not fully matched yet")
 
                     ## Get the new best Lay price
                     lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
@@ -299,7 +317,7 @@ if __name__ == "__main__":
                         bet_id= single_current_order['betId'],
                         new_price= fav_price
                     )
-                    print("replace intructions filter: ", replace_instructions_filter)
+                    logging.info("replace intructions filter: %s", replace_instructions_filter)
 
                     newOrder = trading.betting.replace_orders(
                             market_id = myRaceID,
@@ -307,14 +325,14 @@ if __name__ == "__main__":
                             instructions=[replace_instructions_filter]
                         )
 
-                    print("Replaced order report: ", newOrder)
+                    logging.info("Replaced order report: %s", newOrder)
                     time.sleep(5)
                 else:
-                    print("Full order matched")
+                    logging.info("Full order matched")
                     fullyMatched_flag = True
                     success_flag = True
         except IndexError as e:
-            print("The current orders might have been cleared since the race started")
+            logging.info("The current orders might have been cleared since the race started")
             failGracefully(e)
             continue
         except Exception as e:
@@ -336,7 +354,7 @@ if __name__ == "__main__":
 
                     # Create a DataFrame from the orders
                     betResult = pd.DataFrame(cleared_orders._data['clearedOrders'])
-                    print(betResult)
+                    logging.info("betResult = %s", betResult)
 
                     betOutcome = betResult['betOutcome'][0]
                     profit = 0
@@ -350,16 +368,16 @@ if __name__ == "__main__":
                     
 
                 else:
-                    print("Sleep 60 seconds before checking again if market is settled")
+                    logging.info("Sleep 60 seconds before checking again if market is settled")
                     time.sleep(60) # TODO:Check again in 60 seconds
         except Exception as e:
-            print("Writing to file FAILED")
+            logging.error("Writing to file FAILED")
             failGracefully(e)
             continue
 
 
         randomSleep = np.random.randint(60,180)
-        print("Sleeping for some time before starting the next game = ", randomSleep, " seconds")
+        logging.info("Sleeping for some time before starting the next game = %d seconds", randomSleep)
         time.sleep(randomSleep)
         
 
