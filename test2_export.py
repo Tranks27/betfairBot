@@ -227,7 +227,7 @@ if __name__ == "__main__":
         #######################################
         if(len(liability_options) == 0):
             # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
-            liability_options = [50, 50, 50, 50, 50, 1500, 50, 50, 50, 1500] #not sure why this can't be moved into constants.py
+            liability_options = [50, 50, 50, 50, 50, 1000, 50, 50, 50, 1000] #not sure why this can't be moved into constants.py
         print("liability_options [BEFORE] = ", liability_options, ", LENGTH =", len(liability_options))
 
         [liability_amount] = np.random.choice(liability_options, size=1)
@@ -324,7 +324,8 @@ if __name__ == "__main__":
         # Check if the last bet has settled and note the result
         # Only if the previous race is settled, start next game 
         #######################################
-        settled_flag = False    
+        settled_flag = False
+        timerCnt = 0    
         try:
             while settled_flag == False:
                 cleared_orders = trading.betting.list_cleared_orders(
@@ -348,10 +349,13 @@ if __name__ == "__main__":
 
                     completion_cnt = completion_cnt + 1
                     
-
+                elif(timerCnt > 15):
+                    settled_flag = True
+                    print("TimerCNT is greater than 10. Hard skip to next game")
                 else:
                     print("Sleep 60 seconds before checking again if market is settled")
                     time.sleep(60) # TODO:Check again in 60 seconds
+                    timerCnt = timerCnt + 1
         except Exception as e:
             print("Writing to file FAILED")
             failGracefully(e)
