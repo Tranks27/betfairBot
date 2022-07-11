@@ -88,7 +88,7 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
     for obj in market_book.runners:
         lay_options_ids.append(obj.selection_id)
         
-    logging.info("lay_options_ids = %s", lay_options_ids)
+    logging.debug("lay_options_ids = %s", lay_options_ids)
     
     lay_selection_id = lay_options_ids[lay_selection_index]
     logging.info("lay_selection_id = %d", lay_selection_id)
@@ -107,9 +107,9 @@ def clearOutputFile(fname):
     return
 
 def failGracefully(error='N/A'):
-    logging.critical("Error: ", error, exc_info=True)
-    logging.error("Moving to next match")
-    logging.error("********************************************************\n\n\n")
+    logging.error("Error: {0}".format(error) )
+    logging.info("Moving to next match")
+    logging.info("********************************************************\n\n\n")
 
 
 if __name__ == "__main__":
@@ -221,7 +221,7 @@ if __name__ == "__main__":
             failGracefully()
             continue
         else:
-            logging.info("Lay option found successfully = " + str(lay_selection_index))
+            logging.info("Lay option found successfully = %d" , lay_selection_index)
 
         # %%
         #######################################
@@ -244,8 +244,8 @@ if __name__ == "__main__":
         # random from a list of 10 options
         #######################################
         if(len(liability_options) == 0):
-            # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
-            liability_options = [50, 50, 50, 50, 50, 980, 50, 50, 50, 985] #not sure why this can't be moved into constants.py
+            liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
+            # liability_options = [50, 50, 50, 50, 50, 980, 50, 50, 50, 985] #not sure why this can't be moved into constants.py
         logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
 
         [liability_amount] = np.random.choice(liability_options, size=1)
@@ -332,7 +332,7 @@ if __name__ == "__main__":
                     fullyMatched_flag = True
                     success_flag = True
         except IndexError as e:
-            logging.info("The current orders might have been cleared since the race started")
+            logging.error("The current orders might have been cleared since the race started")
             failGracefully(e)
             continue
         except Exception as e:
@@ -371,7 +371,7 @@ if __name__ == "__main__":
                     logging.info("Sleep 60 seconds before checking again if market is settled")
                     time.sleep(60) # TODO:Check again in 60 seconds
         except Exception as e:
-            logging.error("Writing to file FAILED")
+            logging.info("Writing to file FAILED")
             failGracefully(e)
             continue
 

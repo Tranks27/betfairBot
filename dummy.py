@@ -10,13 +10,24 @@ import time
 #########################################################################
 import logging
 
+def failGracefully(error='N/A'):
+    logging.error("Error: {0}".format(error) )
+    # logging.error("Error: %s", (error) )
+    logging.info("Moving to next match")
+    logging.error("********************************************************\n\n\n")
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("debug.log"),
+        logging.FileHandler("temp.log"),
         logging.StreamHandler()
     ]
 )
-liability_options = [50, 50, 50, 50, 50, 1500, 50, 50, 50, 1500] #not sure why this can't be moved into constants.py
-logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
+
+try:
+    x = 10/0
+except Exception as e:
+    logging.info("Fatal error in main loop")
+    failGracefully(e)
+
