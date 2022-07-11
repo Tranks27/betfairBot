@@ -78,10 +78,24 @@ def choose_lay_option_neds(venueName):
     logging.info("odds_arr = %s", odds_arr)
 
     ## Check if there are 6 runners or no price is advertised
-    if len(odds_arr) != 6 or '99' in odds_arr or 'SP' in odds_arr:
+    if len(odds_arr) != 6 or '99' in odds_arr:
+        logging.error("ERROR!!! less than 6 runners")
         logging.info('Length of odds_arr = %d', len(odds_arr))
         logging.info("odds_arr = %s", odds_arr)
         return -2
+
+    ## Check if the odds_arr is empty
+    if len(odds_arr) == 0:
+        logging.error("Neds api 2nd attempt failed")
+        logging.info("odds_arr = %s", odds_arr)
+        return -3
+
+    ## Check if no price is advertised
+    if 'SP' in odds_arr:
+        logging.info('Only SP data provided by NEDs')
+        logging.info("odds_arr = %s", odds_arr)
+        return -4
+        
 
     ## Sort out the odds_arr
     sorted_odds = sorted(odds_arr,key=float)
@@ -93,6 +107,7 @@ def choose_lay_option_neds(venueName):
 
     ## TODO: check only if the 2 lowest odds are similar
     if pos1 == pos2 or pos2 == pos3:
+        logging.error("2 same odds found")
         logging.info('Two of the 3 smallest odds are the same : pos1 = %d, pos2 = %d, pos3 = %d', pos1, pos2, pos3)
         return -1
 
