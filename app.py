@@ -152,6 +152,7 @@ if __name__ == "__main__":
     success_flag = True
     liability_options = []
     clearOutputFile(constants.F_NAME)
+    end_of_day_cnt = 0
 
     while(completion_cnt < constants.NUM_GAMES):
         ## if some error occured, sleep for a while not to repeat the same game
@@ -163,7 +164,20 @@ if __name__ == "__main__":
         # Filter out only greyhoud races
         #######################################
         gb_gh_events = filter_gh_races(constants.GH_RACING_ID)#Greyhound racing ID
+        if len(gb_gh_events) == 0:
+            logging.error("No UK Greyhounds events found")
+            end_of_day_cnt = end_of_day_cnt +1
 
+            if end_of_day_cnt > 2: # after three tries, end the program
+                logging.info("See you tomorrow. Have a good day")
+                trading.logout()
+                exit() #exit gracefully
+            else:
+                logging.info("Try again")
+                continue
+        else:
+            end_of_day_cnt = 0
+        
         # %%
         #######################################
         # Extract a list of IDs for the forecast markets
@@ -206,18 +220,7 @@ if __name__ == "__main__":
         #######################################
         lay_selection_index = utils.choose_lay_option_neds(myRaceVenue)
 
-        if(lay_selection_index == -1):
-            logging.error("ERROR!!! 2 same odds found")
-            failGracefully()
-            continue
-            
-        elif(lay_selection_index == -2):
-            logging.error("ERROR!!! less than 6 runners")
-            failGracefully()
-            continue
-
-        elif(lay_selection_index == -3):
-            logging.error("ERROR!!! NEDS API failed")
+        if(lay_selection_index < 0):
             failGracefully()
             continue
         else:
@@ -244,7 +247,7 @@ if __name__ == "__main__":
         # random from a list of 10 options
         #######################################
         if(len(liability_options) == 0):
-            liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 100, 100] #not sure why this can't be moved into constants.py
+            liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] #not sure why this can't be moved into constants.py
             # liability_options = [50, 50, 50, 50, 50, 980, 50, 50, 50, 985] #not sure why this can't be moved into constants.py
         logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
 
