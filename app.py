@@ -368,6 +368,7 @@ if __name__ == "__main__":
                     utils.write_to_file(constants.F_NAME, myRaceID, betOutcome, profit, start_time)
 
                     completion_cnt = completion_cnt + 1
+                    logging.info("Completion count = %d", completion_cnt)
                     
 
                 else:
