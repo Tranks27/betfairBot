@@ -12,7 +12,7 @@ $ virtualenv venv
 ```
 $ pip3 install -r requirements.txt
 ```
-5. Install the chromedriver (in the same version as your current chromium/google chrome browser version)
+5. Install the chromedriver (the same version as your current chromium/google chrome browser version)
 - Download the chromedriver from the offcial website here. https://chromedriver.chromium.org/
 - Move the chromedriver to file in PATH
 ```
