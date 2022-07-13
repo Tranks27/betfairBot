@@ -120,8 +120,8 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(message)s",
         handlers=[
-            logging.FileHandler("debug.log"), # log to file
-            logging.StreamHandler() # log to stdout
+            logging.FileHandler("debug1.log"), # log to file
+            # logging.StreamHandler() # log to stdout
             ]
     )
 
@@ -247,8 +247,8 @@ if __name__ == "__main__":
         # random from a list of 10 options
         #######################################
         if(len(liability_options) == 0):
-            liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] #not sure why this can't be moved into constants.py
-            # liability_options = [50, 50, 50, 50, 50, 980, 50, 50, 50, 985] #not sure why this can't be moved into constants.py
+            # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] #not sure why this can't be moved into constants.py
+            liability_options = [50, 50, 50, 50, 50, 50, 50, 50, 50, 1000] #not sure why this can't be moved into constants.py
         logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
 
         [liability_amount] = np.random.choice(liability_options, size=1)

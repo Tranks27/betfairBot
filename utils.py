@@ -95,6 +95,12 @@ def choose_lay_option_neds(venueName):
         logging.info('Only SP data provided by NEDs')
         logging.info("odds_arr = %s", odds_arr)
         return -4
+
+    ## Check if the odds are a float number as it should be
+    if isFloat(odds_arr[0]) == False:
+        logging.info('The odds are not float numbers')
+        logging.info("odds_arr = %s", odds_arr)
+        return -5
         
 
     ## Sort out the odds_arr
@@ -268,6 +274,14 @@ def write_to_file(fname, myRaceID, betOutcome, profit, startTime):
             writer.writerow(['Start Time', 'Race ID', 'Bet Outcome', 'Profit/Loss'])
         
         writer.writerow([startTime, myRaceID, betOutcome, profit])
+
+## check if it's a float
+def isFloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
 
 if __name__ == "__main__":
     venueName = 'crayford-bags'
