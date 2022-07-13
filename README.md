@@ -5,6 +5,8 @@
 2. Create a virtual environment using virtualenv 
 '''
 $ pip3 install virtualenv
+
+
 $ virtualenv venv
 '''
 3. Follow this link to create a self-signed certificate for Betfair: https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login 
@@ -20,8 +22,9 @@ $ pip3 install -r requirements.txt
   $ sudo chmod +x /usr/local/bin/chromedriver
 ```
 
-## Start the program:
+## Start the program
 '''
 $ source venv/bin/activate
+
 $ python3 app.py
 '''
