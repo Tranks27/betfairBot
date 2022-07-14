@@ -1,4 +1,4 @@
-import time
+# import time
 # import constants
 # arr = ['12.0','125.0','12.0','32.0','959','2.0' ]
 
@@ -32,12 +32,42 @@ import time
 #     failGracefully(e)
 
 #########################################################################
-import datetime
-import pytz
-startTime = 0
-print(startTime)
-timeNow = (datetime.datetime.now(pytz.timezone("Europe/London"))-datetime.timedelta(hours=1)) ## minus 1 hr due to daylight savings maybe?
-startTime = timeNow.replace(tzinfo=pytz.UTC)
+# import datetime
+# import pytz
+# startTime = 0
+# print(startTime)
+# timeNow = (datetime.datetime.now(pytz.timezone("Europe/London"))-datetime.timedelta(hours=1)) ## minus 1 hr due to daylight savings maybe?
+# startTime = timeNow.replace(tzinfo=pytz.UTC)
     
     
-print("Market Start Time: %s", startTime)
+# print("Market Start Time: %s", startTime)
+#########################################################################
+# odds = ['99', '99', '99', '99', '99', '99']
+
+# if '-1' in odds:
+#     print("True")
+
+#########################################################################
+## Choose the index of the lay selection out of 30 options or less
+""" coordinates = []
+
+for x in range(6):
+    for y in range(6):
+        if(x != y):
+            coordinates.append((x, y))
+
+print(coordinates) """
+
+# res = [x+1 for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
+# res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
+# logging.info("lay_id index = %s", res[0])
+#########################################################################
+odds_arr = ['8.70', '3.70', '9.50', '5.00', '3.70', '9.00']
+# sorted_odds = ['3.70', '3.70', '4.60', '5.00', '5.50', '9.00']
+sorted_odds = sorted(odds_arr,key=float)
+pos1 = odds_arr.index(sorted_odds[0]) 
+odds_arr.remove(sorted_odds[0])
+print(odds_arr)
+pos2 = odds_arr.index(sorted_odds[1]) +1
+
+print("Forecast = ", pos1+1, pos2+1)
