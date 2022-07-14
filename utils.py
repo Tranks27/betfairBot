@@ -73,18 +73,18 @@ def process_runner_books(runner_books):
 ###
 def choose_lay_option_neds(venueName):
     odds_arr = get_odds(venueName) # try getting the odds
-    if(len(odds_arr) == 0): # try a second time if result is empty
+    if '-1' in odds_arr: # try a second time if result is empty
         odds_arr = get_odds(venueName)
     logging.info("odds_arr = %s", odds_arr)
 
     ## Check if the odds_arr is empty
-    if len(odds_arr) == 0:
+    if '-1' in odds_arr:
         logging.error("Neds api 2nd attempt failed")
         logging.info("odds_arr = %s", odds_arr)
         return -3
 
-    ## Check if there are 6 runners or no price is advertised
-    if len(odds_arr) != 6 or '99' in odds_arr:
+    ## Check if there are less than 6 runners
+    if '99' in odds_arr:
         logging.error("ERROR!!! less than 6 runners")
         logging.info('Length of odds_arr = %d', len(odds_arr))
         logging.info("odds_arr = %s", odds_arr)
@@ -105,16 +105,18 @@ def choose_lay_option_neds(venueName):
     ## Sort out the odds_arr
     sorted_odds = sorted(odds_arr,key=float)
     logging.info("sorted_odds = %s", sorted_odds)
+    
     pos1 = odds_arr.index(sorted_odds[0]) 
-    pos2 = odds_arr.index(sorted_odds[1]) 
-    pos3 = odds_arr.index(sorted_odds[2]) 
+    odds_arr.remove(sorted_odds[0]) # remove the element so that the same element is not picked again if the lowest two elements were the same
+    pos2 = odds_arr.index(sorted_odds[1]) + 1
+    # pos3 = odds_arr.index(sorted_odds[2]) 
     logging.info("Forecast = %d - %d", pos1+1, pos2+1)
 
-    ## TODO: check only if the 2 lowest odds are similar
-    if pos1 == pos2 or pos2 == pos3:
-        logging.error("2 same odds found")
-        logging.info('Two of the 3 smallest odds are the same : pos1 = %d, pos2 = %d, pos3 = %d', pos1, pos2, pos3)
-        return -1
+    ## TODO: avoid if the 3 lowest odds are similar ## EDIT: We want to include the races with same lowest odds as well
+    # if pos1 == pos2 or pos2 == pos3:
+    #     logging.error("2 same odds found")
+    #     logging.info('Two of the 3 smallest odds are the same : pos1 = %d, pos2 = %d, pos3 = %d', pos1, pos2, pos3)
+    #     return -1
 
     ## Choose the index of the lay selection out of 30 options or less
     coordinates = []
@@ -173,8 +175,6 @@ def get_neds_odds(venueName):
     options.add_argument('--incognito')
     driver = webdriver.Chrome(options=options)
 
-    odds = []
-
     # venueName = 'newcastle-bags'
     url = "https://www.neds.com.au/racing/" + venueName
     logging.info("Next Neds URL to try = %s", url)
@@ -210,39 +210,46 @@ def get_neds_odds(venueName):
     ##############
     # Get the odds
     ##############
+    odds = ['-1', '-1', '-1', '-1', '-1', '-1']
     for i,val in enumerate(data_arr_part2):
         if('1. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('99')
+                odds[0] = '99'
             else:
-                odds.append(str(data_arr_part2[i+2])) #get the first value of that string
+                odds[0] = str(data_arr_part2[i+2]) #get the first value of that string
+
         elif('2. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('99')
+                odds[1] = '99'
             else:
-                odds.append(str(data_arr_part2[i+2])) 
+                odds[1] = str(data_arr_part2[i+2]) #get the first value of that string
+
         elif('3. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('99')
+                odds[2] = '99'
             else:
-                odds.append(str(data_arr_part2[i+2])) 
+                odds[2] = str(data_arr_part2[i+2]) #get the first value of that string
+
         elif('4. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('99')
+                odds[3] = '99'
             else:
-                odds.append(str(data_arr_part2[i+2])) 
+                odds[3] = str(data_arr_part2[i+2]) #get the first value of that string
+
         elif('5. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('99')
+                odds[4] = '99'
             else:
-                odds.append(str(data_arr_part2[i+2])) 
+                odds[4] = str(data_arr_part2[i+2]) #get the first value of that string
+
         elif('6. ' in val):
             if(data_arr_part2[i+1] == 'SCRATCHED' or data_arr_part2[i+1] == 'SCRATCHED (LATE)'):
-                odds.append('99')
+                odds[5] = '99'
             else:
-                odds.append(str(data_arr_part2[i+2])) 
+                odds[5] = str(data_arr_part2[i+2]) #get the first value of that string
 
-    if odds == []:
+
+    if '-1' in odds:
         logging.error("Neds api failed")
 
     driver.close()
@@ -253,7 +260,7 @@ def get_odds(venueName):
     venueName_vars = [venueName+"-bags", venueName, venueName+"-am"]
     for i in venueName_vars:
         odds_arr = get_neds_odds(i)
-        if(len(odds_arr) != 0):
+        if('-1' not in odds_arr):
             logging.info("True Venue Name = %s", i)
             break # found it
         
