@@ -47,27 +47,44 @@
 # if '-1' in odds:
 #     print("True")
 
+
+#########################################################################
+pos1 = 0
+pos2 = 0
+odds_arr = ['8.70', '3.70', '9.50', '99', '3.70', '9.00']
+if '99' in odds_arr:
+    scratched_index = odds_arr.index('99')
+    print("scratched index = " , scratched_index)
+# sorted_odds = ['3.70', '3.70', '4.60', '5.00', '5.50', '9.00']
+sorted_odds = sorted(odds_arr,key=float)
+print("sorted odds = ", sorted_odds)
+pos1 = odds_arr.index(sorted_odds[0]) 
+# odds_arr.remove(sorted_odds[0])
+# print(odds_arr)
+## Check if there are duplicates and act accordingly
+if sorted_odds[0] == sorted_odds[1]:
+    pos2 = odds_arr.index(sorted_odds[1], pos1+1) # search after the first duplicate
+else:
+    pos2 = odds_arr.index(sorted_odds[1])
+
+
+print("Forecast = ", pos1+1, pos2+1)
+
 #########################################################################
 ## Choose the index of the lay selection out of 30 options or less
-""" coordinates = []
+coordinates = []
 
 for x in range(6):
     for y in range(6):
         if(x != y):
-            coordinates.append((x, y))
+            if('99' in odds_arr):
+                if(x != scratched_index and y != scratched_index):
+                    coordinates.append((x, y))
+            else:
+                coordinates.append((x, y))
 
-print(coordinates) """
+print(coordinates, "length = ", len(coordinates))
 
 # res = [x+1 for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
-# res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
-# logging.info("lay_id index = %s", res[0])
-#########################################################################
-odds_arr = ['8.70', '3.70', '9.50', '5.00', '3.70', '9.00']
-# sorted_odds = ['3.70', '3.70', '4.60', '5.00', '5.50', '9.00']
-sorted_odds = sorted(odds_arr,key=float)
-pos1 = odds_arr.index(sorted_odds[0]) 
-odds_arr.remove(sorted_odds[0])
-print(odds_arr)
-pos2 = odds_arr.index(sorted_odds[1]) +1
-
-print("Forecast = ", pos1+1, pos2+1)
+res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
+print("lay_id index = ", res[0])

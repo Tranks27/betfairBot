@@ -83,12 +83,15 @@ def choose_lay_option_neds(venueName):
         logging.info("odds_arr = %s", odds_arr)
         return -3
 
-    ## Check if there are less than 6 runners
+    ## Avoid if there are less than 6 runners ## EDIT: we want to include it now
     if '99' in odds_arr:
         logging.error("ERROR!!! less than 6 runners")
         logging.info('Length of odds_arr = %d', len(odds_arr))
         logging.info("odds_arr = %s", odds_arr)
-        return -2
+        logging.info("No need to return, proceed")
+        scratched_index = odds_arr.index('99')
+        logging.info("scratched index = %d", scratched_index)
+        # return -2
 
     ## Check if no price is advertised
     if 'SP' in odds_arr:
@@ -103,12 +106,20 @@ def choose_lay_option_neds(venueName):
         return -5
         
     ## Sort out the odds_arr
+    if '99' in odds_arr:
+        scratched_index = odds_arr.index('99')
+        logging.info("scratched index = %d" , scratched_index)
     sorted_odds = sorted(odds_arr,key=float)
     logging.info("sorted_odds = %s", sorted_odds)
     
+    pos1 = 0
+    pos2 = 0
     pos1 = odds_arr.index(sorted_odds[0]) 
     odds_arr.remove(sorted_odds[0]) # remove the element so that the same element is not picked again if the lowest two elements were the same
-    pos2 = odds_arr.index(sorted_odds[1]) + 1
+    if sorted_odds[0] == sorted_odds[1]:
+        pos2 = odds_arr.index(sorted_odds[1], pos1+1) # search after the first duplicate
+    else:
+        pos2 = odds_arr.index(sorted_odds[1])
     # pos3 = odds_arr.index(sorted_odds[2]) 
     logging.info("Forecast = %d - %d", pos1+1, pos2+1)
 
@@ -124,7 +135,11 @@ def choose_lay_option_neds(venueName):
     for x in range(6):
         for y in range(6):
             if(x != y):
-                coordinates.append((x, y))
+                if('99' in odds_arr):
+                    if(x != scratched_index and y != scratched_index):
+                        coordinates.append((x, y))
+                else:
+                    coordinates.append((x, y))
 
     # res = [x+1 for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
     res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
