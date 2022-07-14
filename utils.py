@@ -106,16 +106,12 @@ def choose_lay_option_neds(venueName):
         return -5
         
     ## Sort out the odds_arr
-    if '99' in odds_arr:
-        scratched_index = odds_arr.index('99')
-        logging.info("scratched index = %d" , scratched_index)
     sorted_odds = sorted(odds_arr,key=float)
     logging.info("sorted_odds = %s", sorted_odds)
     
     pos1 = 0
     pos2 = 0
     pos1 = odds_arr.index(sorted_odds[0]) 
-    odds_arr.remove(sorted_odds[0]) # remove the element so that the same element is not picked again if the lowest two elements were the same
     if sorted_odds[0] == sorted_odds[1]:
         pos2 = odds_arr.index(sorted_odds[1], pos1+1) # search after the first duplicate
     else:

@@ -51,7 +51,7 @@
 #########################################################################
 pos1 = 0
 pos2 = 0
-odds_arr = ['8.70', '3.70', '9.50', '99', '3.70', '9.00']
+odds_arr = ['8.70', '4.70', '9.50', '3.00', '3.70', '9.00']
 if '99' in odds_arr:
     scratched_index = odds_arr.index('99')
     print("scratched index = " , scratched_index)
