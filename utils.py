@@ -11,6 +11,7 @@ import time
 import datetime
 import pytz
 import csv
+import numpy as np
 from app import logging
 #########################################################
 ## External functions
@@ -86,11 +87,17 @@ def choose_lay_option_neds(venueName):
     ## Avoid if there are less than 6 runners ## EDIT: we want to include it now
     if '99' in odds_arr:
         logging.error("ERROR!!! less than 6 runners")
-        logging.info('Length of odds_arr = %d', len(odds_arr))
         logging.info("odds_arr = %s", odds_arr)
-        logging.info("No need to return, proceed")
-        scratched_index = odds_arr.index('99')
-        logging.info("scratched index = %d", scratched_index)
+
+        ## if there are more than one scratched runners
+        num_scratched = np.where(np.array(odds_arr) == '99')[0]
+        if len(num_scratched) > 1:
+            logging.error("More than 1 runner scratched")
+            return -2
+        else:
+            scratched_index = odds_arr.index('99')
+            logging.info("scratched index = %d", scratched_index+1)
+            logging.info("No need to return, proceed")
         # return -2
 
     ## Check if no price is advertised

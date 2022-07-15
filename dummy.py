@@ -49,7 +49,7 @@
 
 
 #########################################################################
-pos1 = 0
+""" pos1 = 0
 pos2 = 0
 odds_arr = ['8.70', '4.70', '9.50', '3.00', '3.70', '9.00']
 if '99' in odds_arr:
@@ -87,4 +87,10 @@ print(coordinates, "length = ", len(coordinates))
 
 # res = [x+1 for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
 res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
-print("lay_id index = ", res[0])
+print("lay_id index = ", res[0]) """
+
+#########################################################################
+import numpy as np
+odds_arr = ['8.70', '992', '9.50', '3.00', '3.70', '99w']
+num_scratched = np.where(np.array(odds_arr) == '99')[0]
+print(num_scratched)
