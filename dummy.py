@@ -90,7 +90,12 @@ res = [x for x,y in enumerate(coordinates) if (y[0] ==pos1 and y[1] == pos2) ]
 print("lay_id index = ", res[0]) """
 
 #########################################################################
-import numpy as np
-odds_arr = ['8.70', '992', '9.50', '3.00', '3.70', '99w']
-num_scratched = np.where(np.array(odds_arr) == '99')[0]
-print(num_scratched)
+# import numpy as np
+# odds_arr = ['8.70', '992', '9.50', '3.00', '3.70', '99w']
+# num_scratched = np.where(np.array(odds_arr) == '99')[0]
+# print(num_scratched)
+
+#########################################################################
+import certs.passwords as secret
+
+print(secret.PASSWORD)
