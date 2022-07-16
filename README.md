@@ -4,7 +4,7 @@
 1. Download the source code
 2. Create a virtual environment using virtualenv 
 ```
-$ pip3 install virtualenv
+$ sudo apt install python3-virtualenv
 $ virtualenv venv
 ```
 3. Follow this link to create a self-signed certificate for Betfair: https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login 
