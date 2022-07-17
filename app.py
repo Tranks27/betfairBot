@@ -98,7 +98,7 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
 
     return lay_selection_id, fav_price
 
-def clearOutputFile(fname):
+def clearFileContents(fname):
     ## Clear the contents of the output file
     with open(fname, 'r+') as f:
         f.truncate()
@@ -113,6 +113,11 @@ def failGracefully(error='N/A'):
 
 
 if __name__ == "__main__":
+    ## Clear file contents #TODO: save the logs and keep a copy in a storage somewhere
+    # clearFileContents(xxx) # cronlogs.log maybe?
+    clearFileContents(constants.OUT_FILE) # debug.log
+    clearFileContents(constants.PL_FILE) #Profit_loss.csv
+
     #######################################
     # Init logging
     #######################################
@@ -120,7 +125,7 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(message)s",
         handlers=[
-            logging.FileHandler("debug.log"), # log to file
+            logging.FileHandler(constants.OUT_FILE), # log to file
             # logging.StreamHandler() # log to stdout
             ]
     )
@@ -151,7 +156,6 @@ if __name__ == "__main__":
     completion_cnt = 0
     success_flag = True
     liability_options = []
-    clearOutputFile(constants.F_NAME)
     end_of_day_cnt = 0
 
     while(completion_cnt < constants.NUM_GAMES):
@@ -365,7 +369,7 @@ if __name__ == "__main__":
                         profit = profit + float(i)
 
                     ## Record the results into a csv file
-                    utils.write_to_file(constants.F_NAME, myRaceID, betOutcome, profit, start_time)
+                    utils.write_to_file(constants.PL_FILE, myRaceID, betOutcome, profit, start_time)
 
                     completion_cnt = completion_cnt + 1
                     logging.info("Completion count = %d", completion_cnt)
