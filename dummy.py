@@ -97,5 +97,9 @@ print("lay_id index = ", res[0]) """
 
 #########################################################################
 import certs.passwords as secret
+import datetime
+import pytz
 
-print(secret.PASSWORD)
+timeNow = (datetime.datetime.now(pytz.timezone("Australia/Sydney")))
+print(timeNow)
+print(secret.PASSWORD, "exiting...")
