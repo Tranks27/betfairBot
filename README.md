@@ -24,13 +24,13 @@ $ pip3 install -r requirements.txt
 ## Pre-requisites
 - A betfair account with non-interactive login enabled. More info here: https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login
 - Your own betfair live API token. Create a file /betfairBot/certs/passwords.py and add the following sensitive data in it.
-'''
+```
 ## login details
 USERNAME = "xxx" # betfair username
 PASSWORD = "xxx" # betfair password 
 API_KEY_DEMO = "xxx" # (optional) betfair demo API token
 API_KEY_LIVE = "xxx" # betfair LIVE API token
-'''
+```
 
 ## Start the program
 ```
