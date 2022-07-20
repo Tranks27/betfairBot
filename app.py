@@ -100,8 +100,8 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
 
 def clearFileContents(fname):
     ## Clear the contents of the output file
-    with open(fname, 'r+') as f:
-        f.truncate()
+    with open(fname, 'w') as f:
+        #f.truncate()
         logging.info("Cleared contents from the output file -> %s", fname)
           
     return
