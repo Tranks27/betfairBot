@@ -115,18 +115,20 @@ def failGracefully(error='N/A'):
 if __name__ == "__main__":
     ## Clear file contents #TODO: save the logs and keep a copy in a storage somewhere
     # clearFileContents(xxx) # cronlogs.log maybe?
-    clearFileContents(constants.OUT_FILE) # debug.log
+    # clearFileContents(constants.OUT_FILE) # debug.log
+    clearFileContents('debug.log') # debug.log
     clearFileContents(constants.PL_FILE) #Profit_loss.csv
 
     #######################################
     # Init logging
     #######################################
+    logging.root.handlers = [] ## this makes sure it works logging system is already initialized somewhere else
     logging.basicConfig(
         level=logging.INFO,
         format="%(message)s",
         handlers=[
-            logging.FileHandler(constants.OUT_FILE), # log to file
-            # logging.StreamHandler() # log to stdout
+            logging.FileHandler("debug.log"), # log to file
+            logging.StreamHandler() # log to stdout
             ]
     )
 
@@ -147,7 +149,7 @@ if __name__ == "__main__":
                                         certs=certs_path)
 
     trading.login()
-
+    logging.info("Successfully logged in")
     #######################################
     # Start the program
     #######################################
