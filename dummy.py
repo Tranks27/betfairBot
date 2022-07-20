@@ -96,10 +96,22 @@ print("lay_id index = ", res[0]) """
 # print(num_scratched)
 
 #########################################################################
-import certs.passwords as secret
-import datetime
-import pytz
+# import certs.passwords as secret
+# import datetime
+# import pytz
 
-timeNow = (datetime.datetime.now(pytz.timezone("Australia/Sydney")))
-print(timeNow)
-print(secret.PASSWORD, "exiting...")
+# timeNow = (datetime.datetime.now(pytz.timezone("Australia/Sydney")))
+# print(timeNow)
+# print(secret.PASSWORD, "exiting...") """
+
+#########################################################################
+tooLowCnt = 0
+tooHighCnt = 0
+odds_arr = ['18.70', '4.70', '39.50', '1.50', '1.70', '9.00']
+for i in odds_arr:
+    if(float(i) < 2.5):
+        tooLowCnt = tooLowCnt + 1
+    if(float(i) > 10.0):
+        tooHighCnt = tooHighCnt + 1
+    
+print(tooLowCnt, " and ", tooHighCnt)

@@ -84,31 +84,41 @@ def choose_lay_option_neds(venueName):
         logging.info("odds_arr = %s", odds_arr)
         return -3
 
-    ## Avoid if there are less than 6 runners ## EDIT: we want to include it now
-    if '99' in odds_arr:
-        logging.error("ERROR!!! less than 6 runners")
-        logging.info("odds_arr = %s", odds_arr)
-
-        ## if there are more than one scratched runners
+    ## Avoid if there are less than 5 runners
+    if '99' in odds_arr: ## If there's a scratched runner
         num_scratched = np.where(np.array(odds_arr) == '99')[0]
+        ## if there are more than one scratched runners, skip
         if len(num_scratched) > 1:
             logging.error("More than 1 runner scratched")
             return -2
         else:
             scratched_index = odds_arr.index('99')
             logging.info("scratched index = %d", scratched_index+1)
-            logging.info("No need to return, proceed")
+            logging.info("Only 1 runner scratched, proceed")
         # return -2
+
+    ## check the lowest odds and highest odds follows my criteria
+    tooLowCnt = 0
+    tooHighCnt = 0
+    for i in odds_arr:
+        if(float(i) < 2.6):
+            tooLowCnt = tooLowCnt + 1
+        if(float(i) > 9.9):
+            tooHighCnt = tooHighCnt + 1
+    if tooLowCnt > 1 or tooHighCnt > 1:
+        logging.info("The odds are extreme. SKIP")
+        logging.info("odds_arr = %s", odds_arr)
+        return -6
 
     ## Check if no price is advertised
     if 'SP' in odds_arr:
-        logging.info('Only SP data provided by NEDs')
+        logging.info('Only SP data provided by NEDs, SKIP')
         logging.info("odds_arr = %s", odds_arr)
         return -4
 
     ## Check if the odds are a float number as it should be
     if isFloat(odds_arr[0]) == False:
-        logging.info('The odds are not float numbers')
+        logging.info('The odds are not float numbers, SKIP')
         logging.info("odds_arr = %s", odds_arr)
         return -5
         
@@ -119,6 +129,7 @@ def choose_lay_option_neds(venueName):
     pos1 = 0
     pos2 = 0
     pos1 = odds_arr.index(sorted_odds[0]) 
+    ## Deal with min odds duplicates
     if sorted_odds[0] == sorted_odds[1]:
         pos2 = odds_arr.index(sorted_odds[1], pos1+1) # search after the first duplicate
     else:
