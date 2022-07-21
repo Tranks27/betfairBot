@@ -83,6 +83,18 @@ def choose_lay_option_neds(venueName):
         logging.error("Neds api 2nd attempt failed")
         logging.info("odds_arr = %s", odds_arr)
         return -3
+    
+    ## Check if no price is advertised
+    if 'SP' in odds_arr:
+        logging.info('Only SP data provided by NEDs, SKIP')
+        logging.info("odds_arr = %s", odds_arr)
+        return -4
+
+    ## Check if the odds are a float number as it should be
+    if isFloat(odds_arr[0]) == False:
+        logging.info('The odds are not float numbers, SKIP')
+        logging.info("odds_arr = %s", odds_arr)
+        return -5
 
     ## Avoid if there are less than 5 runners
     if '99' in odds_arr: ## If there's a scratched runner
@@ -97,7 +109,7 @@ def choose_lay_option_neds(venueName):
             logging.info("Only 1 runner scratched, proceed")
         # return -2
 
-    ## check the lowest odds and highest odds follows my criteria
+    ## Check the lowest odds and highest odds follow my criteria
     tooLowCnt = 0
     tooHighCnt = 0
     for i in odds_arr:
@@ -109,18 +121,6 @@ def choose_lay_option_neds(venueName):
         logging.info("The odds are extreme. SKIP")
         logging.info("odds_arr = %s", odds_arr)
         return -6
-
-    ## Check if no price is advertised
-    if 'SP' in odds_arr:
-        logging.info('Only SP data provided by NEDs, SKIP')
-        logging.info("odds_arr = %s", odds_arr)
-        return -4
-
-    ## Check if the odds are a float number as it should be
-    if isFloat(odds_arr[0]) == False:
-        logging.info('The odds are not float numbers, SKIP')
-        logging.info("odds_arr = %s", odds_arr)
-        return -5
         
     ## Sort out the odds_arr
     sorted_odds = sorted(odds_arr,key=float)
