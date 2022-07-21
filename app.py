@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/home/ubuntu/betfairBot/venv/bin/python3
+# START
+'''#!/usr/bin/env python3'''
 # %%
 # Import libraries
 import betfairlightweight
@@ -128,7 +130,7 @@ if __name__ == "__main__":
         format="%(message)s",
         handlers=[
             logging.FileHandler("debug.log"), # log to file
-            logging.StreamHandler() # log to stdout
+            # logging.StreamHandler() # log to stdout
             ]
     )
 
