@@ -202,6 +202,10 @@ def get_neds_odds(venueName):
     options = Options()
     options.add_argument('--headless') # headless browser so GUI is not shown
     options.add_argument('--incognito')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-gpu')
+    options.add_argument('enable-features=NetworkServiceInProcess')
+    options.add_argument('disable-features=NetworkService') 
     driver = webdriver.Chrome(options=options)
 
     # venueName = 'newcastle-bags'
