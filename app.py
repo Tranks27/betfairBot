@@ -269,7 +269,7 @@ if __name__ == "__main__":
             logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
         else:
             liability_amount = 1500
-            lost_game_flag = True
+            lost_game_flag = False
 
         # %%
         #######################################
