@@ -161,6 +161,7 @@ if __name__ == "__main__":
     success_flag = True
     liability_options = []
     end_of_day_cnt = 0
+    lost_game_flag = False
 
     while(completion_cnt < constants.NUM_GAMES):
         ## if some error occured, sleep for a while not to repeat the same game
@@ -254,16 +255,21 @@ if __name__ == "__main__":
         # Choose the liability amount
         # random from a list of 10 options
         #######################################
-        if(len(liability_options) == 0):
-            liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 200] #not sure why this can't be moved into constants.py
-            # liability_options = [20, 20, 20, 20, 20, 20, 20, 20, 20, 1000] #not sure why this can't be moved into constants.py
-        logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
+        ## if the last game was lost, bet 1500 else proceed normally
+        if lost_game_flag == False:
+            if(len(liability_options) == 0):
+                liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 200] #not sure why this can't be moved into constants.py
+                # liability_options = [20, 20, 20, 20, 20, 20, 20, 20, 20, 1000] #not sure why this can't be moved into constants.py
+            logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
 
-        [liability_amount] = np.random.choice(liability_options, size=1)
-        logging.info("Chosen Liability amount = $%d", liability_amount)
+            [liability_amount] = np.random.choice(liability_options, size=1)
+            logging.info("Chosen Liability amount = $%d", liability_amount)
 
-        liability_options.remove(liability_amount)
-        logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
+            liability_options.remove(liability_amount)
+            logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
+        else:
+            liability_amount = 1500
+            lost_game_flag = True
 
         # %%
         #######################################
@@ -371,6 +377,10 @@ if __name__ == "__main__":
                     profit = 0
                     for i in betResult['profit']:
                         profit = profit + float(i)
+
+                    ## if the game is lost, bet more in the next game
+                    if profit < 0:
+                        lost_game_flag = True
 
                     ## Record the results into a csv file
                     utils.write_to_file(constants.PL_FILE, myRaceID, betOutcome, profit, start_time)
