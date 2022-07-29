@@ -105,7 +105,7 @@ print("lay_id index = ", res[0]) """
 # print(secret.PASSWORD, "exiting...") """
 
 #########################################################################
-tooLowCnt = 0
+""" tooLowCnt = 0
 tooHighCnt = 0
 odds_arr = ['18.70', '4.70', '39.50', '1.50', '1.70', '9.00']
 for i in odds_arr:
@@ -114,4 +114,10 @@ for i in odds_arr:
     if(float(i) > 10.0):
         tooHighCnt = tooHighCnt + 1
     
-print(tooLowCnt, " and ", tooHighCnt)
+print(tooLowCnt, " and ", tooHighCnt) """
+#########################################################################
+from logging.handlers import TimedRotatingFileHandler
+logname = "my_app.log"
+handler = TimedRotatingFileHandler(logname, when="midnight", interval=1)
+handler.suffix = "%Y%m%d"
+logger.addHandler(handler)

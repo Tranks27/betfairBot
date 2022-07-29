@@ -82,6 +82,9 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
     # Grab the first market book from the returned list as we only requested one market 
     market_book = market_books[0]
     runners_df = utils.process_runner_books(market_book.runners)
+    if runners_df < 0:
+        return [-1]
+
     if debug:
         display(runners_df)
 
@@ -98,7 +101,7 @@ def choose_lay_option_bf(price_filter, lay_selection_index):
     [fav_price] = chosen_row_df['Best Lay Price'].values
     logging.info("Chosen fav_price = %s", fav_price)
 
-    return lay_selection_id, fav_price
+    return [0, lay_selection_id, fav_price]
 
 def clearFileContents(fname):
     ## Clear the contents of the output file
@@ -244,7 +247,14 @@ if __name__ == "__main__":
             price_data=['EX_BEST_OFFERS']
         )
         try:
-            lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
+            res = choose_lay_option_bf(price_filter, lay_selection_index)
+            if res[0] < 0:
+                ## skip the game due to immaturity
+                logging.error("Error occurred in choose_lay_option_bf(): Market not mature yet")
+                failGracefully()
+                continue
+            else:
+                [lay_selection_id, fav_price] = res[1:]
         except Exception as e:
             logging.error("Error occurred in choose_lay_option_bf()")
             failGracefully(e)
@@ -259,7 +269,7 @@ if __name__ == "__main__":
         if lost_game_flag == False:
             if(len(liability_options) == 0):
                 liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 200] #not sure why this can't be moved into constants.py
-                # liability_options = [20, 20, 20, 20, 20, 20, 20, 20, 20, 1000] #not sure why this can't be moved into constants.py
+                # liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5] #not sure why this can't be moved into constants.py
             logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
 
             [liability_amount] = np.random.choice(liability_options, size=1)
@@ -269,7 +279,8 @@ if __name__ == "__main__":
             logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
         else:
             liability_amount = 1500
-            lost_game_flag = True
+            # liability_amount = 5
+            lost_game_flag = False
 
         # %%
         #######################################
@@ -327,7 +338,8 @@ if __name__ == "__main__":
                     logging.info("Order is not fully matched yet")
 
                     ## Get the new best Lay price
-                    lay_selection_id, fav_price = choose_lay_option_bf(price_filter, lay_selection_index)
+                    res = choose_lay_option_bf(price_filter, lay_selection_index)
+                    [lay_selection_id, fav_price] = res[1:]
 
                     ## Replace the unmatched order with the new price
                     replace_instructions_filter = filters.replace_instruction(

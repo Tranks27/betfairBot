@@ -48,6 +48,16 @@ def process_runner_books(runner_books):
                       for runner_book
                       in runner_books]
     
+    ## CHECK if the market is mature based on Back Market Percentage (aka over-rounds)
+    print(best_lay_prices)
+    inverse = [1/float(x) for x in best_lay_prices]
+    bmp_percent = int(sum(inverse) * 100)
+    print("BMP_percent = ", bmp_percent)
+    if bmp_percent < 85 or bmp_percent > 100: ## values recommended by betfair bot manager
+        print("Market not mature. SKIP")
+        return -1
+
+    ## Continue
     selection_ids = [runner_book.selection_id for runner_book in runner_books]
     last_prices_traded = [runner_book.last_price_traded for runner_book in runner_books]
     total_matched = [runner_book.total_matched for runner_book in runner_books]
