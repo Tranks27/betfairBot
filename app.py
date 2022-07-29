@@ -19,6 +19,8 @@ import utils
 import constants
 import logging
 import certs.passwords as secret
+from logging.handlers import TimedRotatingFileHandler
+
 # %%
 def filter_gh_races(gh_racing_id):
     greyhound_racing_filter = filters.market_filter(
@@ -129,7 +131,8 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(message)s",
         handlers=[
-            logging.FileHandler("debug.log"), # log to file
+            TimedRotatingFileHandler("timedDebug.log", when='H', interval=1),
+	    # logging.FileHandler("debug.log"), # log to file
             # logging.StreamHandler() # log to stdout
             ]
     )
@@ -268,7 +271,7 @@ if __name__ == "__main__":
             liability_options.remove(liability_amount)
             logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
         else:
-            liability_amount = 1500
+            liability_amount = 300
             lost_game_flag = False
 
         # %%
