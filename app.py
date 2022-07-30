@@ -404,6 +404,9 @@ if __name__ == "__main__":
         randomSleep = np.random.randint(60,180)
         logging.info("Sleeping for some time before starting the next game = %d seconds", randomSleep)
         time.sleep(randomSleep)
+    
+    logging.info("%d games have been played. BYE BYE and Good luck", constants.NUM_GAMES)
         
+
 
 
