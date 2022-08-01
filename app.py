@@ -162,9 +162,10 @@ if __name__ == "__main__":
     debug = True # Print the data frames
     completion_cnt = 0
     success_flag = True
-    liability_options = []
+    liability_options = [5,200]
     end_of_day_cnt = 0
     lost_game_flag = False
+    feeling_lucky = False
 
     while(completion_cnt < constants.NUM_GAMES):
         ## if some error occured, sleep for a while not to repeat the same game
@@ -258,22 +259,31 @@ if __name__ == "__main__":
         # Choose the liability amount
         # random from a list of 10 options
         #######################################
-        ## if the last game was lost, bet 1500 else proceed normally
-        if lost_game_flag == False:
-            if(len(liability_options) == 0):
-                liability_options = [5, 5, 5, 5, 5, 5, 5, 5, 5, 200] #not sure why this can't be moved into constants.py
-                # liability_options = [20, 20, 20, 20, 20, 20, 20, 20, 20, 1000] #not sure why this can't be moved into constants.py
-            logging.info("liability_options [BEFORE] = %s , LENGTH = %d", liability_options, len(liability_options))
+        ## Include double luck runs
+        if lucky_cnt == 0:
+            feeling_lucky = np.random.choice([True,False], size=1, p=[0.90, 0.10]) # 10% lucky
 
-            [liability_amount] = np.random.choice(liability_options, size=1)
-            logging.info("Chosen Liability amount = $%d", liability_amount)
+            if feeling_lucky == True:
+                lucky_cnt = 2 # to run 2 high stakes game in a row
+                feeling_lucky = False
 
-            liability_options.remove(liability_amount)
-            logging.info("liability_options [AFTER] = %s , LENGTH = %d", liability_options, len(liability_options))
+            else:
+                ## if the last game was lost, bet 1500 else proceed normally
+                if lost_game_flag == False:
+                    [liability_amount] = np.random.choice(liability_options, size=1, p=[0.80, 0.20]) #80% and 20% probabilities
+                    logging.info("Chosen Liability amount = $%d", liability_amount)
+
+                else:
+                    liability_amount = 300
+                    lost_game_flag = False
         else:
-            liability_amount = 300
-            lost_game_flag = False
+            logging.info("Feeling lucky run#%d", 2 - lucky_cnt)
+            liability_amount = 200
+            lucky_cnt = lucky_cnt - 1
 
+        
+            
+        
         # %%
         #######################################
         # Choose order type (limit order or market_on_close order - choose the latter)
