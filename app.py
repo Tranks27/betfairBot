@@ -133,7 +133,7 @@ if __name__ == "__main__":
         handlers=[
             TimedRotatingFileHandler("timedDebug.log", when='D', interval=1),
 	    # logging.FileHandler("debug.log"), # log to file
-            # logging.StreamHandler() # log to stdout
+            #logging.StreamHandler() # log to stdout
             ]
     )
 
@@ -159,7 +159,7 @@ if __name__ == "__main__":
     # Start the program
     #######################################
     ## TODO
-    debug = True # Print the data frames
+    debug = False  # Print the data frames
     completion_cnt = 0
     success_flag = True
     liability_options = [5,200]
@@ -266,7 +266,7 @@ if __name__ == "__main__":
         #######################################
         ## Include double luck runs
         if lucky_cnt == 0:
-            feeling_lucky = np.random.choice([True,False], size=1, p=[0.90, 0.10]) # 10% lucky
+            feeling_lucky = np.random.choice([True,False], size=1, p=[0.10, 0.90]) # 10% lucky
 
             if feeling_lucky == True:
                 lucky_cnt = 2 # to run 2 high stakes game in a row
