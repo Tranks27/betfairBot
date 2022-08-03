@@ -131,7 +131,7 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(message)s",
         handlers=[
-            TimedRotatingFileHandler("timedDebug.log", when='H', interval=1),
+            TimedRotatingFileHandler("timedDebug.log", when='D', interval=1),
 	    # logging.FileHandler("debug.log"), # log to file
             # logging.StreamHandler() # log to stdout
             ]
@@ -373,6 +373,7 @@ if __name__ == "__main__":
         # Only if the previous race is settled, start next game 
         #######################################
         settled_flag = False    
+        check_cnt = 0
         try:
             while settled_flag == False:
                 cleared_orders = trading.betting.list_cleared_orders(
@@ -405,6 +406,10 @@ if __name__ == "__main__":
                 else:
                     logging.info("Sleep 60 seconds before checking again if market is settled")
                     time.sleep(60) # TODO:Check again in 60 seconds
+                    check_cnt = check_cnt + 1
+                    if check_cnt > 10:
+                        settled_flag = True
+
         except Exception as e:
             logging.info("Writing to file FAILED")
             failGracefully(e)
