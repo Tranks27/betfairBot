@@ -91,10 +91,11 @@ def choose_lay_option_neds(venueName):
         return -4
 
     ## Check if the odds are a float number as it should be
-    if isFloat(odds_arr[0]) == False:
-        logging.info('The odds are not float numbers, SKIP')
-        logging.info("odds_arr = %s", odds_arr)
-        return -5
+    for val in odds_arr:
+        if isFloat(val) == False:
+            logging.info('The odds are not float numbers, SKIP')
+            logging.info("odds_arr = %s", odds_arr)
+            return -5
 
     ## Avoid if there are less than 5 runners
     if '99' in odds_arr: ## If there's a scratched runner

@@ -413,6 +413,7 @@ if __name__ == "__main__":
                     time.sleep(60) # TODO:Check again in 60 seconds
                     check_cnt = check_cnt + 1
                     if check_cnt > 10:
+                        logging.info("Assuming market is settled. NEXT game!!!")
                         settled_flag = True
 
         except Exception as e:
