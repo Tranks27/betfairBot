@@ -166,6 +166,7 @@ if __name__ == "__main__":
     end_of_day_cnt = 0
     lost_game_flag = False
     feeling_lucky = False
+    lucky_cnt = 0
 
     while(completion_cnt < constants.NUM_GAMES):
         ## if some error occured, sleep for a while not to repeat the same game
@@ -254,6 +255,10 @@ if __name__ == "__main__":
             failGracefully(e)
             continue
 
+        if fav_price > 30:
+            logging.error("Minimum Price too high. SKIP!!!")
+            failGracefully()
+            continue
         # %%
         #######################################
         # Choose the liability amount
