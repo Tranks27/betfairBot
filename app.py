@@ -273,6 +273,10 @@ if __name__ == "__main__":
                 lucky_cnt = 2 # to run 2 high stakes game in a row
                 feeling_lucky = False
 
+                logging.info("Feeling lucky run#%d", 2 - lucky_cnt)
+                liability_amount = 200
+                lucky_cnt = lucky_cnt - 1
+
             else:
                 ## if the last game was lost, bet 1500 else proceed normally
                 if lost_game_flag == False:
