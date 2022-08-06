@@ -113,6 +113,7 @@ def clearFileContents(fname):
 def failGracefully(error='N/A'):
     logging.error("Error: {0}".format(error) )
     logging.info("Moving to next match")
+    time.sleep(60)
     logging.info("********************************************************\n\n\n")
 
 
@@ -255,7 +256,7 @@ if __name__ == "__main__":
             failGracefully(e)
             continue
 
-        if fav_price > 30:
+        if fav_price > constants.MAX_FAV_PRICE:
             logging.error("Minimum Price too high. SKIP!!!")
             failGracefully()
             continue

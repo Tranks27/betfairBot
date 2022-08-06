@@ -1,3 +1,4 @@
+# from asyncio import constants
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -13,6 +14,7 @@ import pytz
 import csv
 import numpy as np
 from app import logging
+import constants
 #########################################################
 ## External functions
 #########################################################
@@ -114,9 +116,9 @@ def choose_lay_option_neds(venueName):
     tooLowCnt = 0
     tooHighCnt = 0
     for i in odds_arr:
-        if(float(i) < 2.6):
+        if(float(i) < constants.MIN_ODDS):
             tooLowCnt = tooLowCnt + 1
-        if(float(i) > 9.9):
+        if(float(i) > constants.MAX_ODDS):
             tooHighCnt = tooHighCnt + 1
     if tooLowCnt > 1 or tooHighCnt > 1:
         logging.info("The odds are extreme. SKIP")
