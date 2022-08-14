@@ -274,7 +274,7 @@ if __name__ == "__main__":
                 feeling_lucky = False
 
                 logging.info("Feeling lucky run#%d", 2 - lucky_cnt)
-                liability_amount = 200
+                liability_amount = liability_options[1]
                 lucky_cnt = lucky_cnt - 1
 
             else:
