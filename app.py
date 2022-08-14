@@ -132,7 +132,7 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(message)s",
         handlers=[
-            TimedRotatingFileHandler("timedDebug.log", when='D', interval=1),
+            TimedRotatingFileHandler("timedDebug.log", when='H', interval=12),
 	    # logging.FileHandler("debug.log"), # log to file
             #logging.StreamHandler() # log to stdout
             ]
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     debug = False  # Print the data frames
     completion_cnt = 0
     success_flag = True
-    liability_options = [5,200]
+    liability_options = [2,50]
     end_of_day_cnt = 0
     lost_game_flag = False
     feeling_lucky = False
@@ -284,14 +284,14 @@ if __name__ == "__main__":
                     logging.info("Chosen Liability amount = $%d", liability_amount)
 
                 else:
-                    liability_amount = 300
+                    liability_amount = liability_options[1]
                     lost_game_flag = False
         else:
             logging.info("Feeling lucky run#%d", 2 - lucky_cnt)
-            liability_amount = 200
+            liability_amount = liability_options[1]
             lucky_cnt = lucky_cnt - 1
 
-        
+        logging.info("Final Chosen Liability amount = %d", liability_amount)
             
         
         # %%
