@@ -37,3 +37,6 @@ API_KEY_LIVE = "xxx" # betfair LIVE API token
 $ source venv/bin/activate
 $ python3 app.py
 ```
+
+## Automate the program on the cloud
+- Follow the instructions in CloudAutomation.txt
