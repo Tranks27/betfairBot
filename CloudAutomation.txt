@@ -1,0 +1,76 @@
+## Loading to AWS ec2 instance:
+
+1. Create an ec2 instance: Ubuntu, 30GB free-tier
+Install basic modules
+$ sudo apt update
+$ sudo apt install unzip libnss3 python3-pip
+
+3. Install google-chrome-stable using wget
+$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+$ sudo apt install ./google-chrome-stable_current_amd64.deb
+
+4.Install the modules in the requirements.txt
+$ pip3 install -r requirements.txt
+
+5. Get the self-signed certificate (to interact with betfair)
+$ openssl genrsa -out client-2048.key 2048
+  - Copy the following in /usr/lib/ssl/openssl.cnf or /etc/ssl/openssl.cnf
+    [ ssl_client ]
+    basicConstraints = CA:FALSE
+    nsCertType = client
+    keyUsage = digitalSignature, keyEncipherment
+    extendedKeyUsage = clientAuth
+  - $ openssl req -new -config /usr/lib/ssl/openssl.cnf -key client-2048.key -out client-2048.csr
+      Fill up whatever the details you want
+  - $ openssl x509 -req -days 365 -in client-2048.csr -signkey client-2048.key -out client-2048.crt -extfile /usr/lib/ssl/openssl.cnf -extensions ssl_client 
+
+6. Copy this newly generated client-2048.crt from the ec2 instance to local machine
+  - Download the aws_key.pem from the associated aws instance console on local machine
+  - Run this from local machine
+      $ scp -i <private_key> <source> <destination>
+      $ scp -i /path/to/aws_key.pem ubuntu@pulic.ip.addr.XX:/path/to/desired_file ./
+      Eg. $ scp -i aws_key1.pem -r ubuntu@3.25.90.199:/home/ubuntu/betfairBot/logs ./
+      NOTE: Use “-r” for desired folder
+  - More details : https://www.bornfight.com/blog/transferring-files-between-local-machine-and-aws-instance/ 
+  - (sometimes) make the private key secure by
+    $ chmod 400 /path/to/aws_key.pem
+
+7.Upload the newly generated client-2048.crt on Betfair -> Account Details -> Security -> Automated Betting Program Access -> Edit
+  
+## Remove sensitive data from github
+Install git-filter-repo
+  - Download the package from here with the corresponding operating system (eg. Ubuntu 22.04) https://github.com/newren/git-filter-repo/blob/main/INSTALL.md
+  - Install the debian package as follows
+    $ sudo dpkg -i /absolute/path/to/deb/file
+    $ sudo apt install -f
+  - Follow this tutorial to remove: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo
+  - NOTE: if no remote url is found, add back the github repo url by
+    $ git remote set-url origin <ssh or https url>
+
+## Cronjobs - ~ the powerful, the Myth, the Legend ~
+### Create a cronjob file
+
+Create a .sh file and write the following in it
+  Syntax = $ path/to/venv/python3 path/to/script
+  Eg. 
+  ~/betfairBot/venv/bin/python3 ~/betfairBot/dummy.py
+
+### Add a cronjob to the system:
+1. $ crontab -e
+
+2. Choose the nano or any editor you want
+
+3. At the bottom of the file write the following line
+  * * * * * <file/to/run> >> <logfileName> 2>&1
+  Eg. the following will trigger it every minute
+  * * * * * ~/betfairBot/cronjob.sh >> ~/betfairBot/cronlogs.log 2>&1
+  (we want * 10 * * * for sydney time 8pm every day because UTC10:00 = SYD20:00)
+NOTE: aws ec2 instance usually uses a UTC time zone, so adjust accordingly
+
+Details to configure the frequency: 
+https://www.cumulations.com/blog/how-to-write-cron-jobs-on-amazon-web-servicesaws-ec2-server/#:~:text=Cron%20Expression%20Examples%3A
+
+https://bktapan.medium.com/how-to-schedule-a-python-script-crontab-with-virtualenv-96bd6fcaa56a
+
+https://serverfault.com/questions/85893/running-a-cron-job-manually-and-immediately#:~:text=cron%20has%20a%20restricted%20environment%20(the%20most%20obvious%20manifestation%20of%20this%20is%20a%20different%20path). 
+    
