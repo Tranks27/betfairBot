@@ -1,5 +1,5 @@
 # betfairBot
-
+- A bot that places bet using Betfair API and webscraped data from your favorite bookmaker website. It is automated to run your betting strategy on a free-tier cloud VM (uses AWS EC2 instance but can be on any cloud platform). 
 ## Installation
 1. Download the source code
 2. Create a virtual environment using virtualenv 
