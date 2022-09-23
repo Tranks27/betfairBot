@@ -20,7 +20,7 @@ $ pip3 install -r requirements.txt
   $ sudo mv ~/path/to/chromedriver /usr/local/bin/
   $ sudo chmod +x /usr/local/bin/chromedriver
 ```
-
+6. To automate it on cloud, clone this repo on an AWS ec2 VM instance and create a cron job to run the script. 
 ## Pre-requisites
 - A betfair account with non-interactive login enabled. More info here: https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login
 - Your own betfair live API token. Create a file /betfairBot/certs/passwords.py and add the following sensitive data in it.
