@@ -23,6 +23,7 @@ $ pip3 install -r requirements.txt
 6. To automate it on cloud, clone this repo on an AWS ec2 VM instance and create a cron job using ```$crontab -e``` and the provided cronjob.sh to run the script. 
 ## Pre-requisites
 - A betfair account with non-interactive login enabled. More info here: https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login
+- Refer to Getting Started guide for getting your own API token here. https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Getting+Started#GettingStarted-HowDoIGetStarted?
 - Your own betfair live API token. Create a file /betfairBot/certs/passwords.py and add the following sensitive data in it.
 ```
 ## login details
